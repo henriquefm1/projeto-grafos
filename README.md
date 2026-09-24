@@ -24,7 +24,7 @@ conexsom/
 Compilar e rodar:
 
 ```
-javac -encoding UTF-8 -d bin src/*.java
+javac -encoding UTF-8 -d bin *.java
 java -cp bin ConexSom
 ```
 

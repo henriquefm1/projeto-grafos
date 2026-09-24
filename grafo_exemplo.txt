@@ -1,0 +1,16 @@
+2
+6
+0 "Djavan"
+1 "Caetano Veloso"
+2 "Gilberto Gil"
+3 "Marisa Monte"
+4 "Tim Maia"
+5 "Jorge Ben Jor"
+7
+0 1 0.8200
+0 3 0.6100
+1 2 0.9000
+1 3 0.7400
+2 5 0.5800
+4 5 0.6700
+3 4 0.3500
