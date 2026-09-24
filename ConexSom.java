@@ -92,7 +92,8 @@ public class ConexSom {
     private static void gravarArquivo() throws Exception {
         if (!temGrafo()) return;
         ArquivoGrafo.gravar(grafo, ARQUIVO);
-        // TODO(18) Mensagem de confirmação só depois que gravar() estiver pronto.
+        System.out.printf("Grafo gravado em %s (%d artistas, %d similaridades).%n",
+                ARQUIVO, grafo.getN(), grafo.getM());
     }
 
     private static void inserirVertice() {

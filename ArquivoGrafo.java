@@ -21,7 +21,9 @@
  *     ...
  *
  * Histórico de alterações (data — autor — descrição):
- *   dd/mm/aaaa — Fulano — Versão inicial
+ *   23/09/2026 — Enrique Cipolla Martins — Versão inicial (leitura)
+ *   24/09/2026 — Henrique Ferreira Marciano — Validações da leitura, gravação
+ *                e exibição formatada (TODOs 8 a 11)
  * =====================================================================
  */
 
@@ -41,83 +43,137 @@ public class ArquivoGrafo {
 
     /**
      * Opção a) — lê o grafo.txt e monta o TGrafo em memória.
-     * Lança IOException com mensagem clara se o arquivo estiver mal formatado.
+     *
+     * Convenção do ConexSom: no grafo NÃO orientado cada aresta aparece
+     * UMA única vez no arquivo (v w peso) e m é o número real de arestas.
+     * Linhas repetidas (inclusive "w v" depois de "v w") ou inválidas são
+     * ignoradas com aviso, e o total efetivamente carregado é informado.
+     *
+     * @throws IOException com mensagem clara se o arquivo estiver mal formatado.
      */
     public static TGrafo ler(String caminho) throws IOException {
         List<String> linhas = lerLinhasUteis(caminho);
-        int pos = 0;
+        int[] pos = {0};   // posição atual (vetor para poder avançar dentro de proximaLinha)
 
-        int tipo = Integer.parseInt(linhas.get(pos++).trim());
-        int n = Integer.parseInt(linhas.get(pos++).trim());
+        int tipo = lerInteiro(proximaLinha(linhas, pos, "tipo do grafo"), "tipo do grafo");
+        if (tipo < 0 || tipo > 7) {
+            throw new IOException("Tipo do grafo inválido: " + tipo + " (esperado de 0 a 7).");
+        }
+        int n = lerInteiro(proximaLinha(linhas, pos, "número de vértices"), "número de vértices");
+        if (n < 0) throw new IOException("Número de vértices negativo: " + n);
         TGrafo g = new TGrafo(tipo, n);
 
         // ---- vértices ----
         for (int i = 0; i < n; i++) {
-            String linha = linhas.get(pos++);
-            Matcher mt = LINHA_VERTICE.matcher(linha);
+            String linha = proximaLinha(linhas, pos, "vértice " + i);
+            Matcher mt = LINHA_VERTICE.matcher(linha.trim());
             if (!mt.matches()) {
                 throw new IOException("Linha de vértice inválida: " + linha);
             }
             int v = Integer.parseInt(mt.group(1));
+            if (v != i) {
+                throw new IOException("Vértices devem estar numerados de 0 a " + (n - 1)
+                        + " em ordem; esperado " + i + ", encontrado " + v + ".");
+            }
             String rotulo = mt.group(2);
             float peso = (mt.group(3) != null) ? parseFloat(mt.group(3)) : 0f;
-
-            // TODO(8) Validar que v == i (vértices numerados 0..n-1, em ordem).
             g.setVertice(v, rotulo, peso);
         }
 
         // ---- arestas ----
-        int m = Integer.parseInt(linhas.get(pos++).trim());
+        int m = lerInteiro(proximaLinha(linhas, pos, "número de arestas"), "número de arestas");
+        int ignoradas = 0;
         for (int i = 0; i < m; i++) {
-            String[] partes = linhas.get(pos++).trim().split("\\s+");
-            int v = Integer.parseInt(partes[0]);
-            int w = Integer.parseInt(partes[1]);
+            String linha = proximaLinha(linhas, pos, "aresta " + i);
+            String[] partes = linha.trim().split("\\s+");
+            if (partes.length < 2) {
+                throw new IOException("Linha de aresta inválida: " + linha);
+            }
+            int v = lerInteiro(partes[0], "vértice de origem");
+            int w = lerInteiro(partes[1], "vértice de destino");
             float peso = (partes.length >= 3) ? parseFloat(partes[2]) : 1f;
 
-            // TODO(9) Decidir e documentar: no grafo NÃO orientado, cada aresta
-            //   aparece UMA vez no arquivo (v w peso) ou duas (v w / w v)?
-            //   O exemplo do PDF lista os dois sentidos, mas ele é orientado.
-            //   Recomendação: uma vez só, e m = nº real de arestas (>= 200).
-            //   Se insereA devolver false (aresta repetida/inválida), avisar.
-            g.insereA(v, w, peso);
+            if (!g.insereA(v, w, peso)) {
+                System.out.println("  Aviso: aresta ignorada (inválida ou repetida): " + linha.trim());
+                ignoradas++;
+            }
+        }
+        if (ignoradas > 0) {
+            System.out.println("  " + ignoradas + " aresta(s) ignorada(s); m declarado = " + m
+                    + ", m carregado = " + g.getM() + ".");
         }
         return g;
     }
 
     /**
      * Opção b) — grava o grafo da memória no MESMO formato da leitura.
-     *
-     * TODO(10) Implementar com PrintWriter (UTF-8):
-     *   1. Linha 1: tipo.  Linha 2: n.
-     *   2. Para cada v: v "rotulo"  (+ " peso" se g.temPesoVertice()).
-     *   3. Linha: m.
-     *   4. Arestas: no não orientado percorrer só w > v (senão sai duplicado);
-     *      no orientado percorrer a matriz toda.
-     *      Acrescentar peso se g.temPesoAresta().
-     *   5. Usar String.format(Locale.US, "%.4f", peso) — com Locale padrão
-     *      pt-BR o Java escreve "0,82" e a leitura pode quebrar.
-     *   Teste obrigatório: ler -> gravar -> ler de novo e comparar n e m.
+     * No não orientado grava só w > v (cada aresta uma vez); no orientado
+     * percorre a matriz inteira. Pesos sempre com ponto decimal.
      */
     public static void gravar(TGrafo g, String caminho) throws IOException {
-        // TODO(10)
-        System.out.println("[TODO] gravar() ainda não implementado.");
+        try (PrintWriter pw = new PrintWriter(new OutputStreamWriter(
+                new FileOutputStream(caminho), StandardCharsets.UTF_8))) {
+            pw.println(g.getTipo());
+            pw.println(g.getN());
+            for (int v = 0; v < g.getN(); v++) {
+                String linha = v + " \"" + g.getRotulo(v) + "\"";
+                if (g.temPesoVertice()) linha += " " + formatarPeso(g.getPesoVertice(v));
+                pw.println(linha);
+            }
+            pw.println(g.getM());
+            for (int v = 0; v < g.getN(); v++) {
+                int inicio = g.isOrientado() ? 0 : v + 1;
+                for (int w = inicio; w < g.getN(); w++) {
+                    if (!g.existeAresta(v, w)) continue;
+                    String linha = v + " " + w;
+                    if (g.temPesoAresta()) linha += " " + formatarPeso(g.getPesoAresta(v, w));
+                    pw.println(linha);
+                }
+            }
+            if (pw.checkError()) {
+                throw new IOException("Falha ao escrever em " + caminho);
+            }
+        }
     }
 
     /**
-     * Opção g) — mostra o conteúdo de forma "visualmente compreensiva e atraente".
-     *
-     * TODO(11) Implementar, por exemplo:
-     *   ╔══ ConexSom — grafo.txt ══╗
-     *   Tipo 2: não orientado com peso na aresta | 85 artistas | 230 similaridades
-     *   --- Artistas ---
-     *     0  Djavan              (grau 7)
-     *   --- Similaridades ---
-     *     Djavan  <-- 0,82 -->  Caetano Veloso
-     *   Mostrar o nome do tipo por extenso (usar descricaoTipo abaixo).
+     * Opção g) — mostra o conteúdo do grafo de forma legível:
+     * resumo (tipo por extenso, n, m, grau médio), lista de artistas com
+     * grau e lista de similaridades com os nomes dos dois artistas.
      */
     public static void mostrarConteudo(TGrafo g) {
-        // TODO(11)
-        System.out.println("[TODO] mostrarConteudo() ainda não implementado.");
+        String titulo = " ConexSom — conteúdo do grafo.txt ";
+        String barra = "═".repeat(titulo.length());
+        System.out.println("╔" + barra + "╗");
+        System.out.println("║" + titulo + "║");
+        System.out.println("╚" + barra + "╝");
+        System.out.printf("Tipo %d: %s%n", g.getTipo(), descricaoTipo(g.getTipo()));
+        System.out.printf("%d artistas | %d similaridades | grau médio %.2f%n",
+                g.getN(), g.getM(), g.grauMedio());
+
+        System.out.println();
+        System.out.println("--- Artistas (vértices) ---");
+        for (int v = 0; v < g.getN(); v++) {
+            String linha = String.format("  %3d  %-30s grau %d", v, g.getRotulo(v), g.grau(v));
+            if (g.temPesoVertice()) linha += String.format("   peso %.2f", g.getPesoVertice(v));
+            if (g.grau(v) == 0) linha += "   (isolado)";
+            System.out.println(linha);
+        }
+
+        System.out.println();
+        System.out.println("--- Similaridades (arestas) ---");
+        String esq = g.isOrientado() ? "--" : "<--";   // orientado: só uma ponta
+        String dir = "-->";
+        for (int v = 0; v < g.getN(); v++) {
+            int inicio = g.isOrientado() ? 0 : v + 1;
+            for (int w = inicio; w < g.getN(); w++) {
+                if (!g.existeAresta(v, w)) continue;
+                String meio = g.temPesoAresta()
+                        ? String.format(" %s %.2f %s ", esq, g.getPesoAresta(v, w), dir)
+                        : " " + esq + dir + " ";
+                System.out.printf("  %-30s%s%s%n", g.getRotulo(v), meio, g.getRotulo(w));
+            }
+        }
     }
 
     public static String descricaoTipo(int tipo) {
@@ -149,6 +205,23 @@ public class ArquivoGrafo {
             }
         }
         return linhas;
+    }
+
+    /** Devolve a próxima linha útil ou lança erro dizendo o que faltou. */
+    private static String proximaLinha(List<String> linhas, int[] pos, String oQue) throws IOException {
+        if (pos[0] >= linhas.size()) {
+            throw new IOException("Arquivo terminou antes do esperado (faltou: " + oQue + ").");
+        }
+        return linhas.get(pos[0]++);
+    }
+
+    /** Converte para int com mensagem clara em caso de erro. */
+    private static int lerInteiro(String s, String oQue) throws IOException {
+        try {
+            return Integer.parseInt(s.trim());
+        } catch (NumberFormatException e) {
+            throw new IOException("Valor inválido para " + oQue + ": \"" + s.trim() + "\"");
+        }
     }
 
     /** Aceita "0.82" e "0,82". */
