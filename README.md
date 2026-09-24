@@ -1,7 +1,7 @@
 # ConexSom — Recomendação Musical por Similaridade entre Artistas
 
 Projeto de Teoria dos Grafos (Mackenzie, 6º D) — Parte 2.
-Integrantes: Enrique Cipolla Martins (10427834), Henrique Ferreira Marciano (10439797), Pedro Henrique Saraiva Arruda (10437747).
+Integrantes: Enrique Cipolla Martins (RA: 10427834), Henrique Ferreira Marciano (RA: 10439797), Pedro Henrique Saraiva Arruda (RA: 10437747).
 
 **Entrega:** 28/09, até 23h59 (relatório + fontes + grafo.txt + GitHub público).
 **Apresentação:** 01/10, no horário da aula, máximo de 5 minutos, com todos presentes.
