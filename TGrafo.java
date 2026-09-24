@@ -86,22 +86,46 @@ public class TGrafo {
      *   5. m++ (uma única vez, mesmo no não orientado).
      */
     public boolean insereA(int v, int w, float peso) {
-        // TODO(1)
+    // 1. Vértices válidos e sem laço (artista não é similar a si mesmo)
+    if (!verticeValido(v) || !verticeValido(w) || v == w) {
         return false;
     }
+    // 2. Peso inválido: 0 significa "sem aresta" na matriz (rejeita também NaN)
+    if (temPesoAresta() && !(peso > 0f)) {
+        return false;
+    }
+    // 3. Aresta já existente: não conta m duas vezes
+    if (existeAresta(v, w)) {
+        return false;
+    }
+    // 4. Grafo sem peso na aresta: usa peso 1
+    if (!temPesoAresta()) {
+        peso = 1f;
+    }
+    // 5. Grava na matriz (nos dois sentidos se não orientado)
+    adj[v][w] = peso;
+    if (!isOrientado()) {
+        adj[w][v] = peso;
+    }
+    // 6. m conta a aresta uma única vez
+    m++;
+    return true;
+}
 
-    /**
-     * Remove a aresta v-w.
-     *
-     * TODO(2) Implementar:
-     *   1. Validar v, w e se a aresta existe.
-     *   2. adj[v][w] = SEM_ARESTA; se não orientado, adj[w][v] também.
-     *   3. m--.
-     */
     public boolean removeA(int v, int w) {
-        // TODO(2)
+    // 1. Vértices válidos e aresta existente
+    if (!verticeValido(v) || !verticeValido(w) || !existeAresta(v, w)) {
         return false;
     }
+    // 2. Apaga da matriz (nos dois sentidos se não orientado)
+    adj[v][w] = SEM_ARESTA;
+    if (!isOrientado()) {
+        adj[w][v] = SEM_ARESTA;
+    }
+    // 3. m diminui uma única vez
+    m--;
+    return true;
+}
 
     /**
      * Insere um novo vértice (artista) e devolve o índice dele (= n antigo).
