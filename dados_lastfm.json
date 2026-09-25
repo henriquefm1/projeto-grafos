@@ -1,0 +1,4693 @@
+{
+ "fonte": "Last.fm API (artist.getSimilar, artist.getTopTags)",
+ "data_coleta": "25/09/2026 14:30",
+ "sementes": [
+  "Djavan",
+  "Caetano Veloso",
+  "Marisa Monte",
+  "Gilberto Gil",
+  "Tim Maia"
+ ],
+ "parametros": {
+  "MAX_ARTISTAS": 110,
+  "SIMILARES_POR_ARTISTA": 10
+ },
+ "artistas": [
+  "Djavan",
+  "Caetano Veloso",
+  "Marisa Monte",
+  "Gilberto Gil",
+  "Tim Maia",
+  "Jorge Vercillo",
+  "Gal Costa",
+  "Jorge Ben",
+  "Lulu Santos",
+  "Maria Bethânia",
+  "Milton Nascimento",
+  "Chico Buarque",
+  "Caetano Veloso & Gilberto Gil",
+  "Elis Regina",
+  "Luiz Melodia",
+  "Tom Zé",
+  "Novos Baianos",
+  "João Bosco",
+  "Tribalistas",
+  "Vanessa da Mata",
+  "Adriana Calcanhotto",
+  "Marina Lima",
+  "Vanessa Rangel",
+  "Angela Ro Ro",
+  "Paula Toller",
+  "Geraldo Azevedo",
+  "Cassiano",
+  "Hyldon",
+  "Toni Tornado",
+  "Cartola",
+  "Belchior",
+  "Brylho",
+  "Os Originais Do Samba",
+  "Jorge Vercilo",
+  "Preta Gil",
+  "Ana Carolina",
+  "Frejat",
+  "Rita Lee",
+  "Baby Do Brasil",
+  "Trio Mocotó",
+  "Bebeto",
+  "Arthur Verocai",
+  "Os Paralamas Do Sucesso",
+  "Kid Abelha",
+  "Barão Vermelho",
+  "Cidade Negra",
+  "Nando Reis",
+  "Jota Quest",
+  "Leoni",
+  "Skank",
+  "Roupa Nova",
+  "Nana Caymmi",
+  "Maria Rita",
+  "Lô Borges",
+  "Milton Nascimento & Lô Borges",
+  "Beto Guedes",
+  "Adoniran Barbosa",
+  "Toquinho",
+  "Vinícius de Moraes",
+  "Paulinho da Viola",
+  "Edu Lobo",
+  "Chico César",
+  "João Gilberto",
+  "Antonio Carlos Jobim & Elis Regina",
+  "Nara Leão",
+  "Sérgio Sampaio",
+  "Jorge Mautner",
+  "Di Melo",
+  "Gonzaguinha",
+  "Itamar Assumpção",
+  "Erasmo Carlos",
+  "Ave Sangria",
+  "Os Mutantes",
+  "Moraes Moreira",
+  "Ivan Lins",
+  "Dorival Caymmi",
+  "Emílio Santiago",
+  "João Nogueira",
+  "Rita Lee, Roberto de Carvalho",
+  "Cazuza",
+  "Cássia Eller",
+  "Zélia Duncan",
+  "Zeca Baleiro",
+  "Fernanda Abreu",
+  "Zizi Possi",
+  "Letrux",
+  "Pepeu Gomes",
+  "Cazuza & Bebel Gilberto",
+  "Secos & Molhados",
+  "Paulinho Moska",
+  "Elba Ramalho",
+  "Alceu Valença",
+  "Fagner",
+  "Zé Ramalho",
+  "Ednardo",
+  "Amelinha",
+  "Paulinho Pedra Azul",
+  "Ed Motta",
+  "Banda Black Rio",
+  "Ana Mazzotti",
+  "Carlos Dafé",
+  "Gerson King Combo",
+  "Emilio Santiago",
+  "Egberto Gismonti",
+  "Nelson Cavaquinho",
+  "Zé Keti",
+  "Martinho Da Vila",
+  "Clara Nunes",
+  "Raul Seixas",
+  "Sandra De Sá"
+ ],
+ "tags_brutas": {
+  "Djavan": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    47
+   ],
+   [
+    "Bossa Nova",
+    26
+   ],
+   [
+    "brasil",
+    26
+   ],
+   [
+    "brazil",
+    8
+   ],
+   [
+    "samba",
+    2
+   ],
+   [
+    "Djavan",
+    2
+   ],
+   [
+    "male vocalists",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ],
+   [
+    "pop",
+    1
+   ]
+  ],
+  "Caetano Veloso": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "Bossa Nova",
+    81
+   ],
+   [
+    "tropicalia",
+    50
+   ],
+   [
+    "brazilian",
+    48
+   ],
+   [
+    "brasil",
+    15
+   ],
+   [
+    "singer-songwriter",
+    5
+   ],
+   [
+    "brazil",
+    4
+   ],
+   [
+    "60s",
+    1
+   ],
+   [
+    "11",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ]
+  ],
+  "Marisa Monte": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "female vocalists",
+    60
+   ],
+   [
+    "brazilian",
+    38
+   ],
+   [
+    "Bossa Nova",
+    30
+   ],
+   [
+    "brasil",
+    14
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "samba",
+    3
+   ],
+   [
+    "pop",
+    1
+   ],
+   [
+    "Marisa Monte",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ]
+  ],
+  "Gilberto Gil": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    89
+   ],
+   [
+    "tropicalia",
+    57
+   ],
+   [
+    "Bossa Nova",
+    54
+   ],
+   [
+    "brasil",
+    17
+   ],
+   [
+    "brazil",
+    6
+   ],
+   [
+    "samba",
+    4
+   ],
+   [
+    "singer-songwriter",
+    1
+   ],
+   [
+    "jazz",
+    1
+   ],
+   [
+    "reggae",
+    1
+   ]
+  ],
+  "Tim Maia": [
+   [
+    "soul",
+    100
+   ],
+   [
+    "mpb",
+    77
+   ],
+   [
+    "funk",
+    42
+   ],
+   [
+    "brazilian",
+    35
+   ],
+   [
+    "brasil",
+    12
+   ],
+   [
+    "70s",
+    3
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "Tim Maia",
+    1
+   ],
+   [
+    "jazz",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ]
+  ],
+  "Jorge Vercillo": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    64
+   ],
+   [
+    "Jorge Vercillo",
+    24
+   ],
+   [
+    "vercillo",
+    11
+   ],
+   [
+    "soft rock",
+    1
+   ],
+   [
+    "pop",
+    1
+   ],
+   [
+    "brasil",
+    1
+   ],
+   [
+    "rnb",
+    1
+   ],
+   [
+    "pop rock",
+    1
+   ],
+   [
+    "romantic",
+    1
+   ]
+  ],
+  "Gal Costa": [
+   [
+    "Bossa Nova",
+    100
+   ],
+   [
+    "mpb",
+    78
+   ],
+   [
+    "brazilian",
+    49
+   ],
+   [
+    "tropicalia",
+    45
+   ],
+   [
+    "female vocalists",
+    18
+   ],
+   [
+    "brasil",
+    10
+   ],
+   [
+    "brazil",
+    5
+   ],
+   [
+    "samba",
+    1
+   ],
+   [
+    "11",
+    1
+   ],
+   [
+    "latin",
+    1
+   ]
+  ],
+  "Jorge Ben": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    53
+   ],
+   [
+    "Bossa Nova",
+    52
+   ],
+   [
+    "brasil",
+    16
+   ],
+   [
+    "brazil",
+    6
+   ],
+   [
+    "samba rock",
+    5
+   ],
+   [
+    "tropicalia",
+    1
+   ],
+   [
+    "funk",
+    1
+   ],
+   [
+    "11",
+    1
+   ]
+  ],
+  "Lulu Santos": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "pop",
+    86
+   ],
+   [
+    "brazilian",
+    44
+   ],
+   [
+    "rock",
+    43
+   ],
+   [
+    "brasil",
+    20
+   ],
+   [
+    "pop rock",
+    6
+   ],
+   [
+    "brazil",
+    4
+   ],
+   [
+    "brazilian rock",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ]
+  ],
+  "Maria Bethânia": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "Bossa Nova",
+    73
+   ],
+   [
+    "female vocalists",
+    42
+   ],
+   [
+    "brasil",
+    41
+   ],
+   [
+    "brazilian",
+    17
+   ],
+   [
+    "samba",
+    4
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "tropicalia",
+    1
+   ],
+   [
+    "Maria Bethânia",
+    1
+   ],
+   [
+    "Maria Bethania",
+    1
+   ]
+  ],
+  "Milton Nascimento": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    61
+   ],
+   [
+    "brasil",
+    30
+   ],
+   [
+    "brazil",
+    17
+   ],
+   [
+    "world",
+    8
+   ],
+   [
+    "singer-songwriter",
+    5
+   ],
+   [
+    "clube da esquina",
+    4
+   ],
+   [
+    "Bossa Nova",
+    1
+   ],
+   [
+    "jazz",
+    1
+   ],
+   [
+    "latin",
+    1
+   ]
+  ],
+  "Chico Buarque": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "Bossa Nova",
+    72
+   ],
+   [
+    "samba",
+    38
+   ],
+   [
+    "brazilian",
+    34
+   ],
+   [
+    "brasil",
+    13
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "singer-songwriter",
+    3
+   ],
+   [
+    "60s",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ],
+   [
+    "chico buarque",
+    1
+   ]
+  ],
+  "Caetano Veloso & Gilberto Gil": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    100
+   ],
+   [
+    "Bossa Nova",
+    54
+   ],
+   [
+    "tropicalia",
+    47
+   ],
+   [
+    "brasil",
+    21
+   ],
+   [
+    "latin",
+    3
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "tropicália",
+    1
+   ],
+   [
+    "samba",
+    1
+   ],
+   [
+    "Gilberto Gil",
+    1
+   ]
+  ],
+  "Elis Regina": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "Bossa Nova",
+    83
+   ],
+   [
+    "brazilian",
+    44
+   ],
+   [
+    "female vocalists",
+    41
+   ],
+   [
+    "brasil",
+    14
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "jazz",
+    2
+   ],
+   [
+    "samba",
+    1
+   ],
+   [
+    "Elis Regina",
+    1
+   ],
+   [
+    "latin",
+    1
+   ]
+  ],
+  "Luiz Melodia": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "samba",
+    86
+   ],
+   [
+    "brasil",
+    33
+   ],
+   [
+    "brazilian",
+    27
+   ],
+   [
+    "Luis Melodia",
+    5
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "soul",
+    1
+   ],
+   [
+    "Luiz Melodia",
+    1
+   ],
+   [
+    "vi ao vivo",
+    1
+   ],
+   [
+    "musica popular brasileira",
+    1
+   ]
+  ],
+  "Tom Zé": [
+   [
+    "tropicalia",
+    100
+   ],
+   [
+    "mpb",
+    89
+   ],
+   [
+    "experimental",
+    50
+   ],
+   [
+    "brazilian",
+    46
+   ],
+   [
+    "brasil",
+    17
+   ],
+   [
+    "samba",
+    6
+   ],
+   [
+    "brazil",
+    5
+   ],
+   [
+    "Bossa Nova",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ],
+   [
+    "psychedelic",
+    1
+   ]
+  ],
+  "Novos Baianos": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "tropicalia",
+    89
+   ],
+   [
+    "samba",
+    48
+   ],
+   [
+    "brazilian",
+    46
+   ],
+   [
+    "brasil",
+    14
+   ],
+   [
+    "brazil",
+    6
+   ],
+   [
+    "70s",
+    5
+   ],
+   [
+    "rock",
+    1
+   ],
+   [
+    "psychedelic",
+    1
+   ],
+   [
+    "Bossa Nova",
+    1
+   ]
+  ],
+  "João Bosco": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "samba",
+    75
+   ],
+   [
+    "Bossa Nova",
+    46
+   ],
+   [
+    "brasil",
+    32
+   ],
+   [
+    "brazilian",
+    15
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "guitar",
+    1
+   ],
+   [
+    "latin",
+    1
+   ],
+   [
+    "folk",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ]
+  ],
+  "Tribalistas": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    84
+   ],
+   [
+    "brasil",
+    32
+   ],
+   [
+    "brazil",
+    21
+   ],
+   [
+    "latin",
+    9
+   ],
+   [
+    "pop",
+    4
+   ],
+   [
+    "female vocalists",
+    2
+   ],
+   [
+    "world",
+    1
+   ],
+   [
+    "folk",
+    1
+   ],
+   [
+    "Bossa Nova",
+    1
+   ]
+  ],
+  "Vanessa da Mata": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "female vocalists",
+    70
+   ],
+   [
+    "brazilian",
+    45
+   ],
+   [
+    "Bossa Nova",
+    36
+   ],
+   [
+    "brasil",
+    16
+   ],
+   [
+    "brazil",
+    4
+   ],
+   [
+    "Vanessa da Mata",
+    2
+   ],
+   [
+    "samba",
+    1
+   ],
+   [
+    "pop",
+    1
+   ],
+   [
+    "jazz",
+    1
+   ]
+  ],
+  "Adriana Calcanhotto": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "female vocalists",
+    61
+   ],
+   [
+    "brazilian",
+    39
+   ],
+   [
+    "brasil",
+    25
+   ],
+   [
+    "brazil",
+    7
+   ],
+   [
+    "Bossa Nova",
+    4
+   ],
+   [
+    "singer-songwriter",
+    3
+   ],
+   [
+    "brasileira",
+    1
+   ],
+   [
+    "pop",
+    1
+   ],
+   [
+    "Adriana Calcanhotto",
+    1
+   ]
+  ],
+  "Marina Lima": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    55
+   ],
+   [
+    "female vocalists",
+    33
+   ],
+   [
+    "brasil",
+    27
+   ],
+   [
+    "pop",
+    11
+   ],
+   [
+    "brazil",
+    5
+   ],
+   [
+    "pop rock",
+    3
+   ],
+   [
+    "marina lima",
+    1
+   ],
+   [
+    "female vocalist",
+    1
+   ],
+   [
+    "80s",
+    1
+   ]
+  ],
+  "Vanessa Rangel": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "female vocalists",
+    45
+   ],
+   [
+    "brazilian",
+    29
+   ],
+   [
+    "pop",
+    10
+   ],
+   [
+    "female vocal",
+    5
+   ],
+   [
+    "brasil",
+    5
+   ],
+   [
+    "musica brasileira",
+    3
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "brazilian music",
+    1
+   ],
+   [
+    "Brazilian Pop",
+    1
+   ]
+  ],
+  "Angela Ro Ro": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brasil",
+    23
+   ],
+   [
+    "female vocalists",
+    15
+   ],
+   [
+    "blues",
+    10
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "brazilian",
+    3
+   ],
+   [
+    "All",
+    3
+   ],
+   [
+    "lesbian",
+    1
+   ],
+   [
+    "blues rock",
+    1
+   ],
+   [
+    "vocal jazz",
+    1
+   ]
+  ],
+  "Paula Toller": [
+   [
+    "female vocalists",
+    100
+   ],
+   [
+    "pop",
+    95
+   ],
+   [
+    "mpb",
+    63
+   ],
+   [
+    "brasil",
+    51
+   ],
+   [
+    "brazilian",
+    23
+   ],
+   [
+    "rock",
+    21
+   ],
+   [
+    "brazil",
+    12
+   ],
+   [
+    "pop rock",
+    1
+   ],
+   [
+    "Paula Toller",
+    1
+   ],
+   [
+    "alternative",
+    1
+   ]
+  ],
+  "Geraldo Azevedo": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brasil",
+    40
+   ],
+   [
+    "pernambuco",
+    20
+   ],
+   [
+    "brazilian",
+    19
+   ],
+   [
+    "brazil",
+    9
+   ],
+   [
+    "Forro",
+    3
+   ],
+   [
+    "nordeste",
+    2
+   ],
+   [
+    "singer-songwriter",
+    1
+   ],
+   [
+    "Nacional",
+    1
+   ],
+   [
+    "vi ao vivo",
+    1
+   ]
+  ],
+  "Cassiano": [
+   [
+    "soul",
+    100
+   ],
+   [
+    "funk",
+    63
+   ],
+   [
+    "brasil",
+    25
+   ],
+   [
+    "brazilian",
+    25
+   ],
+   [
+    "mpb",
+    12
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "70s",
+    1
+   ],
+   [
+    "rhythm & blues",
+    1
+   ],
+   [
+    "latin",
+    1
+   ],
+   [
+    "Smooth Soul",
+    1
+   ]
+  ],
+  "Hyldon": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "soul",
+    84
+   ],
+   [
+    "brasil",
+    35
+   ],
+   [
+    "brazilian",
+    22
+   ],
+   [
+    "samba rock",
+    11
+   ],
+   [
+    "70s",
+    4
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "All",
+    1
+   ],
+   [
+    "samba",
+    1
+   ],
+   [
+    "rock",
+    1
+   ]
+  ],
+  "Toni Tornado": [
+   [
+    "funk",
+    100
+   ],
+   [
+    "soul",
+    87
+   ],
+   [
+    "brazilian",
+    40
+   ],
+   [
+    "brazil",
+    18
+   ],
+   [
+    "brazilian soul",
+    5
+   ],
+   [
+    "mpb",
+    4
+   ],
+   [
+    "brasil",
+    2
+   ],
+   [
+    "samba rock",
+    1
+   ],
+   [
+    "All",
+    1
+   ],
+   [
+    "brazilian funk",
+    1
+   ]
+  ],
+  "Cartola": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "mpb",
+    48
+   ],
+   [
+    "brasil",
+    25
+   ],
+   [
+    "brazilian",
+    22
+   ],
+   [
+    "brazil",
+    6
+   ],
+   [
+    "cartola",
+    2
+   ],
+   [
+    "Bossa Nova",
+    2
+   ],
+   [
+    "choro",
+    1
+   ],
+   [
+    "70s",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ]
+  ],
+  "Belchior": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    63
+   ],
+   [
+    "brasil",
+    25
+   ],
+   [
+    "belchior",
+    16
+   ],
+   [
+    "alternative",
+    7
+   ],
+   [
+    "folk",
+    7
+   ],
+   [
+    "singer-songwriter",
+    4
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "nordeste",
+    1
+   ],
+   [
+    "ceara",
+    1
+   ]
+  ],
+  "Brylho": [
+   [
+    "pop",
+    100
+   ],
+   [
+    "soul",
+    100
+   ],
+   [
+    "synthpop",
+    66
+   ],
+   [
+    "electropop",
+    66
+   ],
+   [
+    "brazil",
+    33
+   ],
+   [
+    "brasil",
+    33
+   ],
+   [
+    "new wave",
+    33
+   ],
+   [
+    "mpb",
+    10
+   ],
+   [
+    "brazilian",
+    10
+   ],
+   [
+    "pop BR",
+    10
+   ]
+  ],
+  "Os Originais Do Samba": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "brasil",
+    39
+   ],
+   [
+    "brazilian",
+    26
+   ],
+   [
+    "mpb",
+    21
+   ],
+   [
+    "brazil",
+    5
+   ],
+   [
+    "samba rock",
+    1
+   ],
+   [
+    "70s",
+    1
+   ],
+   [
+    "lusofonia",
+    1
+   ],
+   [
+    "os originais do samba",
+    1
+   ],
+   [
+    "latina",
+    1
+   ]
+  ],
+  "Jorge Vercilo": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    48
+   ],
+   [
+    "brasil",
+    25
+   ],
+   [
+    "pop",
+    21
+   ],
+   [
+    "jorge vercilo",
+    8
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ],
+   [
+    "Brasilian",
+    1
+   ],
+   [
+    "musica brasileira",
+    1
+   ],
+   [
+    "brazilian music",
+    1
+   ]
+  ],
+  "Preta Gil": [
+   [
+    "pop",
+    100
+   ],
+   [
+    "brazilian",
+    85
+   ],
+   [
+    "mpb",
+    56
+   ],
+   [
+    "female vocalist",
+    51
+   ],
+   [
+    "brazilian music",
+    16
+   ],
+   [
+    "female vocalists",
+    12
+   ],
+   [
+    "rio de janeiro",
+    9
+   ],
+   [
+    "dance",
+    3
+   ],
+   [
+    "brasil",
+    2
+   ],
+   [
+    "remix",
+    1
+   ]
+  ],
+  "Ana Carolina": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "female vocalists",
+    58
+   ],
+   [
+    "brazilian",
+    31
+   ],
+   [
+    "brasil",
+    26
+   ],
+   [
+    "brazil",
+    7
+   ],
+   [
+    "pop",
+    4
+   ],
+   [
+    "singer-songwriter",
+    4
+   ],
+   [
+    "ana carolina",
+    1
+   ],
+   [
+    "acoustic",
+    1
+   ],
+   [
+    "alternative",
+    1
+   ]
+  ],
+  "Frejat": [
+   [
+    "rock",
+    100
+   ],
+   [
+    "mpb",
+    84
+   ],
+   [
+    "brazilian",
+    50
+   ],
+   [
+    "rock nacional",
+    24
+   ],
+   [
+    "pop rock",
+    10
+   ],
+   [
+    "brasil",
+    10
+   ],
+   [
+    "brazilian rock",
+    9
+   ],
+   [
+    "pop",
+    3
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "rock brasileiro",
+    2
+   ]
+  ],
+  "Rita Lee": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "rock",
+    98
+   ],
+   [
+    "brazilian",
+    54
+   ],
+   [
+    "female vocalists",
+    52
+   ],
+   [
+    "brasil",
+    16
+   ],
+   [
+    "brazil",
+    4
+   ],
+   [
+    "Bossa Nova",
+    4
+   ],
+   [
+    "brazilian rock",
+    1
+   ],
+   [
+    "tropicalia",
+    1
+   ],
+   [
+    "classic rock",
+    1
+   ]
+  ],
+  "Baby Do Brasil": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    81
+   ],
+   [
+    "brasil",
+    17
+   ],
+   [
+    "female vocalists",
+    11
+   ],
+   [
+    "pop",
+    3
+   ],
+   [
+    "Argeu california seixas",
+    1
+   ],
+   [
+    "samba",
+    1
+   ],
+   [
+    "Silvio Passos",
+    1
+   ],
+   [
+    "rio de janeiro",
+    1
+   ],
+   [
+    "folk",
+    1
+   ]
+  ],
+  "Trio Mocotó": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "brazilian",
+    54
+   ],
+   [
+    "brasil",
+    31
+   ],
+   [
+    "mpb",
+    28
+   ],
+   [
+    "latin",
+    13
+   ],
+   [
+    "samba rock",
+    12
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "Samba-Rock",
+    1
+   ],
+   [
+    "soul",
+    1
+   ],
+   [
+    "samba soul",
+    1
+   ]
+  ],
+  "Bebeto": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "samba rock",
+    92
+   ],
+   [
+    "mpb",
+    25
+   ],
+   [
+    "brasil",
+    25
+   ],
+   [
+    "brazilian",
+    6
+   ],
+   [
+    "Bossa Nova",
+    2
+   ],
+   [
+    "guitar",
+    1
+   ],
+   [
+    "indie",
+    1
+   ],
+   [
+    "funk",
+    1
+   ],
+   [
+    "soul",
+    1
+   ]
+  ],
+  "Arthur Verocai": [
+   [
+    "jazz",
+    100
+   ],
+   [
+    "brazilian",
+    84
+   ],
+   [
+    "Bossa Nova",
+    51
+   ],
+   [
+    "mpb",
+    40
+   ],
+   [
+    "world",
+    11
+   ],
+   [
+    "brazil",
+    9
+   ],
+   [
+    "latin",
+    4
+   ],
+   [
+    "brasil",
+    1
+   ],
+   [
+    "samba-jazz",
+    1
+   ],
+   [
+    "psychedelic",
+    1
+   ]
+  ],
+  "Os Paralamas Do Sucesso": [
+   [
+    "rock",
+    100
+   ],
+   [
+    "brazilian rock",
+    76
+   ],
+   [
+    "brazilian",
+    48
+   ],
+   [
+    "mpb",
+    34
+   ],
+   [
+    "brasil",
+    16
+   ],
+   [
+    "ska",
+    8
+   ],
+   [
+    "80s",
+    7
+   ],
+   [
+    "pop rock",
+    1
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "reggae",
+    1
+   ]
+  ],
+  "Kid Abelha": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    99
+   ],
+   [
+    "pop",
+    61
+   ],
+   [
+    "female vocalists",
+    52
+   ],
+   [
+    "brasil",
+    19
+   ],
+   [
+    "pop rock",
+    8
+   ],
+   [
+    "rock",
+    8
+   ],
+   [
+    "80s",
+    2
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "Kid Abelha",
+    1
+   ]
+  ],
+  "Barão Vermelho": [
+   [
+    "rock",
+    100
+   ],
+   [
+    "brazilian rock",
+    81
+   ],
+   [
+    "80s",
+    45
+   ],
+   [
+    "brazilian",
+    44
+   ],
+   [
+    "rock brasileiro",
+    18
+   ],
+   [
+    "brasil",
+    7
+   ],
+   [
+    "brazil",
+    5
+   ],
+   [
+    "rock nacional",
+    2
+   ],
+   [
+    "pop rock",
+    1
+   ],
+   [
+    "mpb",
+    1
+   ]
+  ],
+  "Cidade Negra": [
+   [
+    "reggae",
+    100
+   ],
+   [
+    "brazilian",
+    55
+   ],
+   [
+    "brazilian reggae",
+    23
+   ],
+   [
+    "brasil",
+    20
+   ],
+   [
+    "reggae brasileiro",
+    8
+   ],
+   [
+    "pop",
+    1
+   ],
+   [
+    "mpb",
+    1
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "pop rock",
+    1
+   ],
+   [
+    "reggae brasil",
+    1
+   ]
+  ],
+  "Nando Reis": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "rock",
+    74
+   ],
+   [
+    "brazilian",
+    45
+   ],
+   [
+    "brasil",
+    34
+   ],
+   [
+    "pop",
+    12
+   ],
+   [
+    "brazil",
+    4
+   ],
+   [
+    "nando reis",
+    3
+   ],
+   [
+    "pop rock",
+    1
+   ],
+   [
+    "brazilian rock",
+    1
+   ],
+   [
+    "brazilian music",
+    1
+   ]
+  ],
+  "Jota Quest": [
+   [
+    "pop rock",
+    100
+   ],
+   [
+    "brazilian",
+    78
+   ],
+   [
+    "rock",
+    42
+   ],
+   [
+    "brasil",
+    33
+   ],
+   [
+    "pop",
+    16
+   ],
+   [
+    "brazilian rock",
+    7
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "Jota quest",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ],
+   [
+    "rock nacional",
+    1
+   ]
+  ],
+  "Leoni": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brasil",
+    54
+   ],
+   [
+    "brazilian",
+    34
+   ],
+   [
+    "pop rock",
+    31
+   ],
+   [
+    "brazilian music",
+    10
+   ],
+   [
+    "leoni",
+    4
+   ],
+   [
+    "rock",
+    4
+   ],
+   [
+    "pop",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ]
+  ],
+  "Skank": [
+   [
+    "pop rock",
+    100
+   ],
+   [
+    "brazilian",
+    94
+   ],
+   [
+    "rock",
+    54
+   ],
+   [
+    "brasil",
+    38
+   ],
+   [
+    "pop",
+    15
+   ],
+   [
+    "brazilian rock",
+    7
+   ],
+   [
+    "ska",
+    5
+   ],
+   [
+    "mpb",
+    1
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "reggae",
+    1
+   ]
+  ],
+  "Roupa Nova": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    65
+   ],
+   [
+    "brasil",
+    33
+   ],
+   [
+    "rock",
+    26
+   ],
+   [
+    "80s",
+    11
+   ],
+   [
+    "pop",
+    10
+   ],
+   [
+    "brazil",
+    6
+   ],
+   [
+    "pop rock",
+    2
+   ],
+   [
+    "brazilian rock",
+    1
+   ],
+   [
+    "romantic",
+    1
+   ]
+  ],
+  "Nana Caymmi": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "Bossa Nova",
+    100
+   ],
+   [
+    "female vocalists",
+    40
+   ],
+   [
+    "brazilian",
+    36
+   ],
+   [
+    "brasil",
+    9
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "brazilian music",
+    2
+   ],
+   [
+    "samba",
+    1
+   ],
+   [
+    "60s",
+    1
+   ],
+   [
+    "All",
+    1
+   ]
+  ],
+  "Maria Rita": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "female vocalists",
+    60
+   ],
+   [
+    "Bossa Nova",
+    33
+   ],
+   [
+    "brazilian",
+    32
+   ],
+   [
+    "brasil",
+    13
+   ],
+   [
+    "samba",
+    9
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "jazz",
+    1
+   ],
+   [
+    "maria rita",
+    1
+   ],
+   [
+    "female vocalist",
+    1
+   ]
+  ],
+  "Lô Borges": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "clube da esquina",
+    66
+   ],
+   [
+    "brasil",
+    41
+   ],
+   [
+    "brazil",
+    38
+   ],
+   [
+    "brazilian",
+    17
+   ],
+   [
+    "psychedelic",
+    5
+   ],
+   [
+    "singer-songwriter",
+    3
+   ],
+   [
+    "1970s",
+    1
+   ],
+   [
+    "jazz",
+    1
+   ],
+   [
+    "Psychedelic Rock",
+    1
+   ]
+  ],
+  "Milton Nascimento & Lô Borges": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    69
+   ],
+   [
+    "folk",
+    28
+   ],
+   [
+    "brasil",
+    15
+   ],
+   [
+    "psychedelic pop",
+    7
+   ],
+   [
+    "clube da esquina",
+    5
+   ],
+   [
+    "brazil",
+    4
+   ],
+   [
+    "folk rock",
+    1
+   ],
+   [
+    "psychedelic",
+    1
+   ],
+   [
+    "Progressive rock",
+    1
+   ]
+  ],
+  "Beto Guedes": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "clube da esquina",
+    68
+   ],
+   [
+    "brazilian",
+    39
+   ],
+   [
+    "brazil",
+    31
+   ],
+   [
+    "brasil",
+    10
+   ],
+   [
+    "beto guedes",
+    5
+   ],
+   [
+    "1970s",
+    2
+   ],
+   [
+    "Minas Gerais",
+    1
+   ],
+   [
+    "minas",
+    1
+   ],
+   [
+    "70s",
+    1
+   ]
+  ],
+  "Adoniran Barbosa": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "mpb",
+    55
+   ],
+   [
+    "brasil",
+    24
+   ],
+   [
+    "brazilian",
+    23
+   ],
+   [
+    "brazil",
+    8
+   ],
+   [
+    "Sao Paulo",
+    2
+   ],
+   [
+    "Pagode",
+    1
+   ],
+   [
+    "velha guarda",
+    1
+   ],
+   [
+    "samba paulista",
+    1
+   ],
+   [
+    "chorinho",
+    1
+   ]
+  ],
+  "Toquinho": [
+   [
+    "Bossa Nova",
+    100
+   ],
+   [
+    "mpb",
+    83
+   ],
+   [
+    "brazilian",
+    24
+   ],
+   [
+    "brasil",
+    23
+   ],
+   [
+    "brazil",
+    5
+   ],
+   [
+    "samba",
+    4
+   ],
+   [
+    "guitar",
+    2
+   ],
+   [
+    "jazz",
+    1
+   ],
+   [
+    "instrumental",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ]
+  ],
+  "Vinícius de Moraes": [
+   [
+    "Bossa Nova",
+    100
+   ],
+   [
+    "mpb",
+    79
+   ],
+   [
+    "samba",
+    29
+   ],
+   [
+    "brazilian",
+    29
+   ],
+   [
+    "brasil",
+    13
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    ":cvilaverde",
+    2
+   ],
+   [
+    "-1",
+    1
+   ],
+   [
+    "Bresil",
+    1
+   ],
+   [
+    ":1",
+    1
+   ]
+  ],
+  "Paulinho da Viola": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "mpb",
+    53
+   ],
+   [
+    "brasil",
+    23
+   ],
+   [
+    "brazilian",
+    23
+   ],
+   [
+    "Bossa Nova",
+    10
+   ],
+   [
+    "choro",
+    3
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "Paulinho da Viola",
+    1
+   ],
+   [
+    "latin",
+    1
+   ],
+   [
+    "All",
+    1
+   ]
+  ],
+  "Edu Lobo": [
+   [
+    "Bossa Nova",
+    100
+   ],
+   [
+    "mpb",
+    75
+   ],
+   [
+    "brazilian",
+    42
+   ],
+   [
+    "brasil",
+    36
+   ],
+   [
+    "jazz",
+    15
+   ],
+   [
+    "brazil",
+    4
+   ],
+   [
+    "All",
+    2
+   ],
+   [
+    "Edu Lobo",
+    1
+   ],
+   [
+    "samba",
+    1
+   ],
+   [
+    "latin",
+    1
+   ]
+  ],
+  "Chico César": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brasil",
+    65
+   ],
+   [
+    "brazilian",
+    38
+   ],
+   [
+    "latin",
+    22
+   ],
+   [
+    "brazil",
+    9
+   ],
+   [
+    "male vocalists",
+    2
+   ],
+   [
+    "pop",
+    1
+   ],
+   [
+    "nordeste",
+    1
+   ],
+   [
+    "world",
+    1
+   ],
+   [
+    "brazilian music",
+    1
+   ]
+  ],
+  "João Gilberto": [
+   [
+    "Bossa Nova",
+    100
+   ],
+   [
+    "brazilian",
+    46
+   ],
+   [
+    "jazz",
+    27
+   ],
+   [
+    "mpb",
+    21
+   ],
+   [
+    "brasil",
+    8
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "samba",
+    2
+   ],
+   [
+    "latin",
+    1
+   ],
+   [
+    "Joao Gilberto",
+    1
+   ],
+   [
+    "guitar",
+    1
+   ]
+  ],
+  "Antonio Carlos Jobim & Elis Regina": [
+   [
+    "Bossa Nova",
+    100
+   ],
+   [
+    "brazilian",
+    57
+   ],
+   [
+    "jazz",
+    36
+   ],
+   [
+    "mpb",
+    23
+   ],
+   [
+    "brazil",
+    6
+   ],
+   [
+    "female vocalists",
+    1
+   ],
+   [
+    "70s",
+    1
+   ],
+   [
+    "jazz collaboration",
+    1
+   ],
+   [
+    "folk",
+    1
+   ],
+   [
+    "latin",
+    1
+   ]
+  ],
+  "Nara Leão": [
+   [
+    "Bossa Nova",
+    100
+   ],
+   [
+    "brazilian",
+    53
+   ],
+   [
+    "mpb",
+    33
+   ],
+   [
+    "female vocalists",
+    29
+   ],
+   [
+    "brazil",
+    7
+   ],
+   [
+    "brasil",
+    5
+   ],
+   [
+    "samba",
+    3
+   ],
+   [
+    "tropicalia",
+    1
+   ],
+   [
+    "nara leao",
+    1
+   ],
+   [
+    "bossa",
+    1
+   ]
+  ],
+  "Sérgio Sampaio": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    55
+   ],
+   [
+    "70s",
+    32
+   ],
+   [
+    "brasil",
+    30
+   ],
+   [
+    "rock",
+    11
+   ],
+   [
+    "samba",
+    2
+   ],
+   [
+    "malditos",
+    1
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "psychedelic",
+    1
+   ],
+   [
+    "Raul Seixas",
+    1
+   ]
+  ],
+  "Jorge Mautner": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "tropicalia",
+    86
+   ],
+   [
+    "brazilian",
+    52
+   ],
+   [
+    "brasil",
+    12
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "malditos",
+    2
+   ],
+   [
+    "brazilian music",
+    2
+   ],
+   [
+    "malditos da mpb",
+    1
+   ],
+   [
+    "maldito",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ]
+  ],
+  "Di Melo": [
+   [
+    "funk",
+    100
+   ],
+   [
+    "brazilian",
+    71
+   ],
+   [
+    "samba",
+    39
+   ],
+   [
+    "soul",
+    14
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "samba rock",
+    2
+   ],
+   [
+    "brasil",
+    2
+   ],
+   [
+    "mpb",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ],
+   [
+    "latin",
+    1
+   ]
+  ],
+  "Gonzaguinha": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brasil",
+    64
+   ],
+   [
+    "samba",
+    31
+   ],
+   [
+    "Bossa Nova",
+    29
+   ],
+   [
+    "brazilian",
+    14
+   ],
+   [
+    "gonzaguinha",
+    4
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "Nacional",
+    1
+   ],
+   [
+    "All",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ]
+  ],
+  "Itamar Assumpção": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brasil",
+    62
+   ],
+   [
+    "brazilian",
+    39
+   ],
+   [
+    "brazil",
+    25
+   ],
+   [
+    "samba",
+    10
+   ],
+   [
+    "vanguarda Paulista",
+    7
+   ],
+   [
+    "experimental",
+    5
+   ],
+   [
+    "malditos",
+    2
+   ],
+   [
+    "brazilian music",
+    1
+   ],
+   [
+    "lira paulistana",
+    1
+   ]
+  ],
+  "Erasmo Carlos": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "rock",
+    84
+   ],
+   [
+    "Jovem Guarda",
+    55
+   ],
+   [
+    "brazilian",
+    52
+   ],
+   [
+    "brazil",
+    13
+   ],
+   [
+    "brasil",
+    5
+   ],
+   [
+    "singer-songwriter",
+    1
+   ],
+   [
+    "60s",
+    1
+   ],
+   [
+    "pop rock",
+    1
+   ],
+   [
+    "Rock and Roll",
+    1
+   ]
+  ],
+  "Ave Sangria": [
+   [
+    "Psychedelic Rock",
+    100
+   ],
+   [
+    "tropicalia",
+    96
+   ],
+   [
+    "brazilian",
+    58
+   ],
+   [
+    "psychedelic",
+    53
+   ],
+   [
+    "Psychedelia",
+    25
+   ],
+   [
+    "mpb",
+    18
+   ],
+   [
+    "70s",
+    6
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "recife",
+    1
+   ],
+   [
+    "udigrudi",
+    1
+   ]
+  ],
+  "Os Mutantes": [
+   [
+    "psychedelic",
+    100
+   ],
+   [
+    "tropicalia",
+    83
+   ],
+   [
+    "brazilian",
+    51
+   ],
+   [
+    "experimental",
+    39
+   ],
+   [
+    "rock",
+    18
+   ],
+   [
+    "Psychedelic Rock",
+    15
+   ],
+   [
+    "Progressive rock",
+    7
+   ],
+   [
+    "60s",
+    2
+   ],
+   [
+    "brasil",
+    2
+   ],
+   [
+    "mpb",
+    1
+   ]
+  ],
+  "Moraes Moreira": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    67
+   ],
+   [
+    "brasil",
+    22
+   ],
+   [
+    "samba",
+    18
+   ],
+   [
+    "rock",
+    5
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "Bahia",
+    2
+   ],
+   [
+    "frevo",
+    1
+   ],
+   [
+    "baiao",
+    1
+   ],
+   [
+    "vi ao vivo",
+    1
+   ]
+  ],
+  "Ivan Lins": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "Bossa Nova",
+    73
+   ],
+   [
+    "brasil",
+    41
+   ],
+   [
+    "brazilian",
+    37
+   ],
+   [
+    "brazil",
+    14
+   ],
+   [
+    "jazz",
+    2
+   ],
+   [
+    "ivan lins",
+    1
+   ],
+   [
+    "musica brasileira",
+    1
+   ],
+   [
+    "male vocal",
+    1
+   ],
+   [
+    "Brazilian Jazz",
+    1
+   ]
+  ],
+  "Dorival Caymmi": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "mpb",
+    84
+   ],
+   [
+    "Bossa Nova",
+    41
+   ],
+   [
+    "brasil",
+    36
+   ],
+   [
+    "brazilian",
+    16
+   ],
+   [
+    "portuguese",
+    3
+   ],
+   [
+    "Bahia",
+    2
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ]
+  ],
+  "Emílio Santiago": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "samba",
+    76
+   ],
+   [
+    "Bossa Nova",
+    10
+   ],
+   [
+    "brazilian music",
+    10
+   ],
+   [
+    "musica brasileira",
+    5
+   ],
+   [
+    "male vocal",
+    5
+   ],
+   [
+    "brasil",
+    3
+   ],
+   [
+    "brazilian",
+    1
+   ],
+   [
+    "funk",
+    1
+   ],
+   [
+    "blogs",
+    1
+   ]
+  ],
+  "João Nogueira": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "mpb",
+    39
+   ],
+   [
+    "brasil",
+    21
+   ],
+   [
+    "brazilian",
+    17
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "All",
+    1
+   ],
+   [
+    "dEUS",
+    1
+   ],
+   [
+    "partido alto",
+    1
+   ],
+   [
+    "rio de janeiro",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ]
+  ],
+  "Rita Lee, Roberto de Carvalho": [
+   [
+    "brazil",
+    100
+   ],
+   [
+    "brazilian",
+    100
+   ],
+   [
+    "Rita Lee",
+    66
+   ]
+  ],
+  "Cazuza": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "rock",
+    90
+   ],
+   [
+    "brazilian rock",
+    47
+   ],
+   [
+    "brazilian",
+    40
+   ],
+   [
+    "brasil",
+    14
+   ],
+   [
+    "80s",
+    6
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "cazuza",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ],
+   [
+    "rock brasileiro",
+    1
+   ]
+  ],
+  "Cássia Eller": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "rock",
+    77
+   ],
+   [
+    "female vocalists",
+    43
+   ],
+   [
+    "brazilian",
+    42
+   ],
+   [
+    "brasil",
+    17
+   ],
+   [
+    "brazilian rock",
+    4
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "rock brasileiro",
+    1
+   ],
+   [
+    "90s",
+    1
+   ],
+   [
+    "samba",
+    1
+   ]
+  ],
+  "Zélia Duncan": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "female vocalists",
+    63
+   ],
+   [
+    "brazilian",
+    40
+   ],
+   [
+    "brasil",
+    36
+   ],
+   [
+    "folk",
+    12
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "pop",
+    3
+   ],
+   [
+    "rock",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ],
+   [
+    "brasil es robertitus",
+    1
+   ]
+  ],
+  "Zeca Baleiro": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brasil",
+    47
+   ],
+   [
+    "brazilian",
+    29
+   ],
+   [
+    "alternative",
+    20
+   ],
+   [
+    "brazil",
+    7
+   ],
+   [
+    "male vocalists",
+    2
+   ],
+   [
+    "singer-songwriter",
+    2
+   ],
+   [
+    "zeca baleiro",
+    1
+   ],
+   [
+    "samba",
+    1
+   ],
+   [
+    "rock",
+    1
+   ]
+  ],
+  "Fernanda Abreu": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    93
+   ],
+   [
+    "female vocalists",
+    46
+   ],
+   [
+    "brazil",
+    34
+   ],
+   [
+    "brasil",
+    16
+   ],
+   [
+    "pop",
+    8
+   ],
+   [
+    "funk",
+    4
+   ],
+   [
+    "dance",
+    1
+   ],
+   [
+    "Fernanda Abreu",
+    1
+   ],
+   [
+    "boogie",
+    1
+   ]
+  ],
+  "Zizi Possi": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "female vocalists",
+    70
+   ],
+   [
+    "Bossa Nova",
+    46
+   ],
+   [
+    "brazilian",
+    40
+   ],
+   [
+    "brasil",
+    12
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "zizi possi",
+    1
+   ],
+   [
+    "female vocalist",
+    1
+   ],
+   [
+    "pop",
+    1
+   ],
+   [
+    "80s",
+    1
+   ]
+  ],
+  "Letrux": [
+   [
+    "brazilian",
+    100
+   ],
+   [
+    "indie",
+    44
+   ],
+   [
+    "synthpop",
+    29
+   ],
+   [
+    "alternative",
+    16
+   ],
+   [
+    "mpb",
+    8
+   ],
+   [
+    "brazil",
+    4
+   ],
+   [
+    "female vocalists",
+    4
+   ],
+   [
+    "female vocalist",
+    1
+   ],
+   [
+    "psychedelic",
+    1
+   ],
+   [
+    "pop",
+    1
+   ]
+  ],
+  "Pepeu Gomes": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    67
+   ],
+   [
+    "brasil",
+    35
+   ],
+   [
+    "guitar",
+    20
+   ],
+   [
+    "Bahia",
+    7
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "rock",
+    1
+   ],
+   [
+    "rock nacional",
+    1
+   ],
+   [
+    "novos baianos",
+    1
+   ],
+   [
+    "nordeste",
+    1
+   ]
+  ],
+  "Cazuza & Bebel Gilberto": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    25
+   ],
+   [
+    "Bossa Nova",
+    17
+   ]
+  ],
+  "Secos & Molhados": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "psychedelic",
+    97
+   ],
+   [
+    "brazilian",
+    57
+   ],
+   [
+    "rock",
+    39
+   ],
+   [
+    "brasil",
+    16
+   ],
+   [
+    "glam rock",
+    8
+   ],
+   [
+    "brazil",
+    7
+   ],
+   [
+    "Psychedelic Rock",
+    2
+   ],
+   [
+    "70s",
+    2
+   ],
+   [
+    "tropicalia",
+    2
+   ]
+  ],
+  "Paulinho Moska": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brasil",
+    53
+   ],
+   [
+    "brazilian",
+    34
+   ],
+   [
+    "Bossa Nova",
+    26
+   ],
+   [
+    "brazil",
+    8
+   ],
+   [
+    "Paulinho Moska",
+    2
+   ],
+   [
+    "singer-songwriter",
+    2
+   ],
+   [
+    "pop",
+    1
+   ],
+   [
+    "rock",
+    1
+   ],
+   [
+    "male vocalists",
+    1
+   ]
+  ],
+  "Elba Ramalho": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    49
+   ],
+   [
+    "Forro",
+    32
+   ],
+   [
+    "brasil",
+    29
+   ],
+   [
+    "female vocalists",
+    14
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "nordeste",
+    2
+   ],
+   [
+    "paraiba",
+    1
+   ],
+   [
+    "folk",
+    1
+   ],
+   [
+    "All",
+    1
+   ]
+  ],
+  "Alceu Valença": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    49
+   ],
+   [
+    "Forro",
+    27
+   ],
+   [
+    "brasil",
+    26
+   ],
+   [
+    "brazil",
+    11
+   ],
+   [
+    "frevo",
+    5
+   ],
+   [
+    "folk",
+    4
+   ],
+   [
+    "pernambuco",
+    1
+   ],
+   [
+    "nordeste",
+    1
+   ],
+   [
+    "baiao",
+    1
+   ]
+  ],
+  "Fagner": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    54
+   ],
+   [
+    "brasil",
+    28
+   ],
+   [
+    "fagner",
+    24
+   ],
+   [
+    "80s",
+    9
+   ],
+   [
+    "nordeste",
+    2
+   ],
+   [
+    "ceara",
+    2
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "singer-songwriter",
+    1
+   ],
+   [
+    "folk",
+    1
+   ]
+  ],
+  "Zé Ramalho": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brazilian",
+    79
+   ],
+   [
+    "folk",
+    52
+   ],
+   [
+    "rock",
+    35
+   ],
+   [
+    "psychedelic",
+    11
+   ],
+   [
+    "brasil",
+    9
+   ],
+   [
+    "singer-songwriter",
+    9
+   ],
+   [
+    "folk rock",
+    2
+   ],
+   [
+    "brazil",
+    2
+   ],
+   [
+    "alternative",
+    2
+   ]
+  ],
+  "Ednardo": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "maracatu",
+    48
+   ],
+   [
+    "ceara",
+    31
+   ],
+   [
+    "brasil",
+    19
+   ],
+   [
+    "brazilian",
+    10
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "folk",
+    3
+   ],
+   [
+    "nordeste",
+    1
+   ],
+   [
+    "tropicaelia",
+    1
+   ],
+   [
+    "aria sertanica",
+    1
+   ]
+  ],
+  "Amelinha": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "Forro",
+    79
+   ],
+   [
+    "brasil",
+    7
+   ],
+   [
+    "brazil",
+    3
+   ],
+   [
+    "female vocalists",
+    2
+   ],
+   [
+    "Nova California Seixas",
+    2
+   ],
+   [
+    "brazilian",
+    2
+   ],
+   [
+    "Aleyster Crowley",
+    1
+   ],
+   [
+    "Argeu california seixas",
+    1
+   ],
+   [
+    "Christopher Lee",
+    1
+   ]
+  ],
+  "Paulinho Pedra Azul": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "samba",
+    100
+   ],
+   [
+    "choro",
+    37
+   ],
+   [
+    "brasil",
+    37
+   ],
+   [
+    "Minas Gerais",
+    8
+   ],
+   [
+    "mpb regional",
+    8
+   ],
+   [
+    "pop",
+    2
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "clube da esquina",
+    1
+   ],
+   [
+    "brazilian",
+    1
+   ]
+  ],
+  "Ed Motta": [
+   [
+    "soul",
+    100
+   ],
+   [
+    "jazz",
+    90
+   ],
+   [
+    "funk",
+    53
+   ],
+   [
+    "brazilian",
+    40
+   ],
+   [
+    "mpb",
+    20
+   ],
+   [
+    "brasil",
+    6
+   ],
+   [
+    "acid jazz",
+    2
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "jazz-funk",
+    1
+   ],
+   [
+    "AOR",
+    1
+   ]
+  ],
+  "Banda Black Rio": [
+   [
+    "funk",
+    100
+   ],
+   [
+    "soul",
+    74
+   ],
+   [
+    "brazilian",
+    34
+   ],
+   [
+    "samba",
+    26
+   ],
+   [
+    "brasil",
+    7
+   ],
+   [
+    "jazz",
+    2
+   ],
+   [
+    "All",
+    1
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "jazz-funk",
+    1
+   ],
+   [
+    "instrumental",
+    1
+   ]
+  ],
+  "Ana Mazzotti": [
+   [
+    "jazz",
+    100
+   ],
+   [
+    "latin",
+    44
+   ],
+   [
+    "mpb",
+    34
+   ],
+   [
+    "brazilian",
+    20
+   ],
+   [
+    "brasil",
+    7
+   ],
+   [
+    "Bossa Nova",
+    2
+   ],
+   [
+    "70s",
+    1
+   ],
+   [
+    "female vocalist",
+    1
+   ],
+   [
+    "female vocalists",
+    1
+   ],
+   [
+    "funk",
+    1
+   ]
+  ],
+  "Carlos Dafé": [
+   [
+    "soul",
+    100
+   ],
+   [
+    "brazil",
+    44
+   ],
+   [
+    "mpb",
+    29
+   ],
+   [
+    "Silvio Passos",
+    29
+   ],
+   [
+    "Wilson Seixas",
+    15
+   ],
+   [
+    "Christopher Lee",
+    4
+   ],
+   [
+    "aleister crowley",
+    4
+   ],
+   [
+    "Raul Seixas",
+    1
+   ],
+   [
+    "aleister",
+    1
+   ],
+   [
+    "sou",
+    1
+   ]
+  ],
+  "Gerson King Combo": [
+   [
+    "soul",
+    100
+   ],
+   [
+    "funk",
+    82
+   ],
+   [
+    "brazilian",
+    19
+   ],
+   [
+    "brazil",
+    6
+   ],
+   [
+    "black music",
+    3
+   ],
+   [
+    "brasil",
+    2
+   ],
+   [
+    "All",
+    1
+   ],
+   [
+    "brazilian funk",
+    1
+   ],
+   [
+    "drjazzmrfunkmusic",
+    1
+   ],
+   [
+    "James Brown impersonator",
+    1
+   ]
+  ],
+  "Emilio Santiago": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "brasil",
+    64
+   ],
+   [
+    "brazilian",
+    24
+   ],
+   [
+    "brazil",
+    11
+   ],
+   [
+    "pop",
+    1
+   ],
+   [
+    "latin",
+    1
+   ],
+   [
+    "jazz",
+    1
+   ],
+   [
+    "FM4",
+    1
+   ],
+   [
+    "lusofonia",
+    1
+   ],
+   [
+    "Bossa Nova",
+    1
+   ]
+  ],
+  "Egberto Gismonti": [
+   [
+    "jazz",
+    100
+   ],
+   [
+    "brazilian",
+    80
+   ],
+   [
+    "instrumental",
+    37
+   ],
+   [
+    "guitar",
+    33
+   ],
+   [
+    "mpb",
+    11
+   ],
+   [
+    "piano",
+    8
+   ],
+   [
+    "brazil",
+    7
+   ],
+   [
+    "brasil",
+    2
+   ],
+   [
+    "contemporary jazz",
+    1
+   ],
+   [
+    "World jazz",
+    1
+   ]
+  ],
+  "Nelson Cavaquinho": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "brasil",
+    38
+   ],
+   [
+    "brazilian",
+    25
+   ],
+   [
+    "mpb",
+    21
+   ],
+   [
+    "velha guarda",
+    8
+   ],
+   [
+    "11",
+    8
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "genius",
+    1
+   ],
+   [
+    "Nelson Cavaquinho",
+    1
+   ],
+   [
+    "brazilian music",
+    1
+   ]
+  ],
+  "Zé Keti": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "Bossa Nova",
+    30
+   ],
+   [
+    "brazilian",
+    14
+   ],
+   [
+    "brasil",
+    5
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "lusofonia",
+    1
+   ],
+   [
+    "dequalidade",
+    1
+   ],
+   [
+    "composer",
+    1
+   ],
+   [
+    "mpb",
+    1
+   ],
+   [
+    "samba de raiz",
+    1
+   ]
+  ],
+  "Martinho Da Vila": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "brazilian",
+    36
+   ],
+   [
+    "mpb",
+    19
+   ],
+   [
+    "brasil",
+    17
+   ],
+   [
+    "brazil",
+    6
+   ],
+   [
+    "Pagode",
+    2
+   ],
+   [
+    "latin",
+    1
+   ],
+   [
+    "martinho da vila",
+    1
+   ],
+   [
+    "composer",
+    1
+   ],
+   [
+    "All",
+    1
+   ]
+  ],
+  "Clara Nunes": [
+   [
+    "samba",
+    100
+   ],
+   [
+    "mpb",
+    63
+   ],
+   [
+    "female vocalists",
+    31
+   ],
+   [
+    "brazilian",
+    31
+   ],
+   [
+    "brasil",
+    14
+   ],
+   [
+    "brazil",
+    5
+   ],
+   [
+    "Bossa Nova",
+    2
+   ],
+   [
+    "Minas Gerais",
+    1
+   ],
+   [
+    "70s",
+    1
+   ],
+   [
+    "female vocalist",
+    1
+   ]
+  ],
+  "Raul Seixas": [
+   [
+    "rock",
+    100
+   ],
+   [
+    "brazilian",
+    83
+   ],
+   [
+    "classic rock",
+    51
+   ],
+   [
+    "mpb",
+    36
+   ],
+   [
+    "brasil",
+    15
+   ],
+   [
+    "brazilian rock",
+    6
+   ],
+   [
+    "brazil",
+    5
+   ],
+   [
+    "70s",
+    1
+   ],
+   [
+    "Raul Seixas",
+    1
+   ],
+   [
+    "Rock and Roll",
+    1
+   ]
+  ],
+  "Sandra De Sá": [
+   [
+    "mpb",
+    100
+   ],
+   [
+    "soul",
+    62
+   ],
+   [
+    "pop",
+    20
+   ],
+   [
+    "brazilian",
+    15
+   ],
+   [
+    "musica brasileira",
+    4
+   ],
+   [
+    "female vocalists",
+    3
+   ],
+   [
+    "female vocal",
+    3
+   ],
+   [
+    "brazilian music",
+    1
+   ],
+   [
+    "brazil",
+    1
+   ],
+   [
+    "funk",
+    1
+   ]
+  ]
+ }
+}
