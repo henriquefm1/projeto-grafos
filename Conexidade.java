@@ -27,6 +27,9 @@ public class Conexidade {
             int[] comp = componentesConexas(g);
             int qtd = contarComponentes(comp);
             System.out.println(qtd == 1 ? "Grafo CONEXO." : "Grafo DESCONEXO (" + qtd + " componentes).");
+            if (qtd> 1) {
+                listarComponentes(g, comp, qtd);
+            }
             // TODO(12) Se desconexo, listar os artistas de cada componente.
             //   No relatório isso vira análise: "ilhas" de artistas sem
             //   ligação com o resto => a recomendação não consegue sair delas.
@@ -37,6 +40,20 @@ public class Conexidade {
             TGrafo reduzido = grafoReduzido(g, comp);
             System.out.println("Grafo reduzido (" + reduzido.getN() + " vértices):");
             reduzido.show();
+        }
+    }
+    private static void listarComponentes(TGrafo g, int[] comp, int qtd) {
+        for (int c = 0; c < qtd; c++) {
+            StringBuilder sb = new StringBuilder("  Componente " + c + ": ");
+            boolean primeiro = true;
+            for (int v = 0; v < comp.length; v++) {
+                if (comp[v] == c) {
+                    if (!primeiro) sb.append(", ");
+                    sb.append(g.getRotulo(v));
+                    primeiro = false;
+                }
+            }
+            System.out.println(sb);
         }
     }
 
@@ -50,8 +67,29 @@ public class Conexidade {
      *   Conexo <=> só existe a componente 0.
      */
     public static int[] componentesConexas(TGrafo g) {
-        int[] comp = new int[g.getN()];
-        // TODO(13)
+        int n = g.getN();
+        int[] comp = new int[n];
+        java.util.Arrays.fill(comp, -1); // -1 = ainda não visitado
+
+        int id = 0;
+        for (int inicio = 0; inicio < n; inicio++) {
+            if (comp[inicio] != -1) {
+                continue; // já pertence a uma componente encontrada antes
+            }
+            java.util.Queue<Integer> fila = new java.util.LinkedList<>();
+            fila.add(inicio);
+            comp[inicio] = id;
+            while (!fila.isEmpty()) {
+                int v = fila.poll();
+                for (int w = 0; w < n; w++) {
+                    if (g.existeAresta(v, w) && comp[w] == -1) {
+                    comp[w] = id;
+                        fila.add(w);
+                    }
+                }   
+            }
+            id++; // essa componente acabou; a próxima leva o próximo id
+        }
         return comp;
     }
 
@@ -77,9 +115,73 @@ public class Conexidade {
      *   5. Senão                                      => C0.
      */
     public static int categoria(TGrafo g) {
-        // TODO(14)
+        int n = g.getN();
+        boolean[][] alc = alcancabilidade(g);
+
+        boolean fortementeConexo = true;
+        boolean semiFortementeConexo = true;
+        for (int v = 0; v < n; v++) {
+            for (int w = v + 1; w < n; w++) {
+                boolean vAlcancaW = alc[v][w];
+                boolean wAlcancaV = alc[w][v];
+                if (!(vAlcancaW && wAlcancaV)) {
+                    fortementeConexo = false;
+                }
+                if (!(vAlcancaW || wAlcancaV)) {
+                    semiFortementeConexo = false;
+                }
+            }
+        }
+        if (fortementeConexo) return 3;
+        if (semiFortementeConexo) return 2;
+        if (conexoIgnorandoDirecao(g)) return 1;
         return 0;
     }
+
+    /** alc[v][w] == true se existe caminho orientado de v até w. */
+    private static boolean[][] alcancabilidade(TGrafo g) {
+        int n = g.getN();
+        boolean[][] alc = new boolean[n][n];
+        for (int origem = 0; origem < n; origem++) {
+            boolean[] visitado = new boolean[n];
+            java.util.Queue<Integer> fila = new java.util.LinkedList<>();
+            fila.add(origem);
+            visitado[origem] = true;
+            while (!fila.isEmpty()) {
+                int v = fila.poll();
+                for (int w = 0; w < n; w++) {
+                    if (g.existeAresta(v, w) && !visitado[w]) {
+                        visitado[w] = true;
+                        fila.add(w);
+                    }
+                }
+            }
+            alc[origem] = visitado;
+        }
+        return alc;
+    }
+
+/** Conexo tratando cada aresta como se fosse nos dois sentidos (só para C1/C0). */
+private static boolean conexoIgnorandoDirecao(TGrafo g) {
+    int n = g.getN();
+    if (n == 0) return true;
+    boolean[] visitado = new boolean[n];
+    java.util.Queue<Integer> fila = new java.util.LinkedList<>();
+    fila.add(0);
+    visitado[0] = true;
+    int contador = 1;
+    while (!fila.isEmpty()) {
+        int v = fila.poll();
+        for (int w = 0; w < n; w++) {
+            if (!visitado[w] && (g.existeAresta(v, w) || g.existeAresta(w, v))) {
+                visitado[w] = true;
+                contador++;
+                fila.add(w);
+            }
+        }
+    }
+    return contador == n;
+}
 
     /**
      * FCONEX — componentes fortemente conexas. comp[v] = id da componente.
@@ -91,8 +193,23 @@ public class Conexidade {
      *     componente de v = R+ ∩ R-  (entre os vértices ainda não marcados)
      */
     public static int[] fconex(TGrafo g) {
-        int[] comp = new int[g.getN()];
-        // TODO(15)
+        int n = g.getN();
+        boolean[][] alc = alcancabilidade(g);
+        int[] comp = new int[n];
+        java.util.Arrays.fill(comp, -1);
+
+        int id = 0;
+        for (int v = 0; v < n; v++) {
+            if (comp[v] != -1) {
+                continue;
+            }
+            for (int w = 0; w < n; w++) {
+                if (comp[w] == -1 && alc[v][w] && alc[w][v]) {
+                    comp[w] = id;
+                }
+            }
+            id++;
+        }
         return comp;
     }
 
@@ -106,7 +223,21 @@ public class Conexidade {
      *   3. Para cada aresta v->w com comp[v] != comp[w]: insereA(comp[v], comp[w], 1).
      */
     public static TGrafo grafoReduzido(TGrafo g, int[] comp) {
-        // TODO(16)
-        return new TGrafo(4, 0);
+        int k = contarComponentes(comp);
+        TGrafo reduzido = new TGrafo(4, k); // tipo 4: orientado, sem peso
+
+        for (int c = 0; c < k; c++) {
+            reduzido.setVertice(c, "C" + c, 0f);
+        }
+
+        int n = g.getN();
+        for (int v = 0; v < n; v++) {
+            for (int w = 0; w < n; w++) {
+                if (g.existeAresta(v, w) && comp[v] != comp[w]) {
+                    reduzido.insereA(comp[v], comp[w], 1f);
+                }
+            }
+        }
+        return reduzido;
     }
 }
