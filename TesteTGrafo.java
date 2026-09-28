@@ -1,38 +1,14 @@
-/*
- * =====================================================================
- * ConexSom — Recomendação Musical por Similaridade entre Artistas
- * Arquivo : TesteTGrafo.java
- *
- * Integrantes:
- *   Enrique Cipolla Martins ........ RA 10427834
- *   Henrique Ferreira Marciano ..... RA 10439797
- *   Pedro Henrique Saraiva Arruda .. RA 10437747
- *
- * Síntese:
- *   Teste automático simples (sem JUnit) da classe TGrafo. Cada verificação
- *   imprime OK ou FALHOU; no final mostra o total e devolve código de saída
- *   diferente de zero se algo falhar. Serve também como evidência de teste
- *   para o relatório (printscreen da saída).
- *
- * Histórico de alterações (data — autor — descrição):
- *   24/09/2026 — Enrique Cipolla Martins — Versão inicial dos testes de TGrafo
- *   24/09/2026 — Henrique Ferreira Marciano — Blocos D (vértices) e E (arquivo)
- * =====================================================================
- *
- * Como rodar (na pasta onde estão os .java):
- *   javac -encoding UTF-8 -d bin *.java
- *   java -cp bin TesteTGrafo
- *
- * Se você alinhou os nomes com a classe de aula (TODO 0) e algum método
- * mudou de nome, ajuste as chamadas abaixo — a lógica dos testes continua
- * a mesma.
- */
+// integrantes:
+//   Enrique Cipolla Martins RA 10427834
+//   Henrique Ferreira Marciano RA 10439797
+//   Pedro Henrique Saraiva Arruda RA 10437747
+
 public class TesteTGrafo {
 
     private static int total = 0;
     private static int falhas = 0;
 
-    /** Registra uma verificação e imprime o resultado. */
+    // registra uma verificação e imprime o resultado.
     private static void confere(String descricao, boolean condicao) {
         total++;
         if (condicao) {
@@ -47,7 +23,7 @@ public class TesteTGrafo {
         return Math.abs(a - b) < 0.0001f;
     }
 
-    /** Grafo de 6 artistas, tipo 2 (não orientado, peso na aresta). */
+    // grafo de 6 artistas, tipo 2 (não orientado, peso na aresta).
     private static TGrafo novoGrafoDeTeste() {
         TGrafo g = new TGrafo(2, 6);
         String[] nomes = {"Djavan", "Caetano Veloso", "Marisa Monte",
@@ -59,10 +35,10 @@ public class TesteTGrafo {
     }
 
     // ------------------------------------------------------------------
-    // Bloco A — funciona logo após o TODO(0): construtor e consultas
+    // bloco A — construtor e consultas
     // ------------------------------------------------------------------
     private static void blocoA_construcao() {
-        System.out.println("\n[A] Construção e consultas básicas (TODO 0)");
+        System.out.println("\n[A] Construção e consultas básicas");
         TGrafo g = novoGrafoDeTeste();
         confere("tipo == 2", g.getTipo() == 2);
         confere("n == 6", g.getN() == 6);
@@ -77,10 +53,10 @@ public class TesteTGrafo {
     }
 
     // ------------------------------------------------------------------
-    // Bloco B — depois dos TODOs 1 e 2: inserir/remover aresta
+    // bloco B — inserir/remover aresta
     // ------------------------------------------------------------------
     private static void blocoB_arestas() {
-        System.out.println("\n[B] Inserir e remover aresta (TODOs 1 e 2)");
+        System.out.println("\n[B] Inserir e remover aresta");
         TGrafo g = novoGrafoDeTeste();
 
         confere("insereA(0,1,0.80) devolve true", g.insereA(0, 1, 0.80f));
@@ -112,10 +88,10 @@ public class TesteTGrafo {
     }
 
     // ------------------------------------------------------------------
-    // Bloco C — depois dos TODOs 5 e 6: busca por rótulo e grau
+    // bloco C — busca por rótulo e grau
     // ------------------------------------------------------------------
     private static void blocoC_buscaEGrau() {
-        System.out.println("\n[C] Busca por rótulo e grau (TODOs 5 e 6)");
+        System.out.println("\n[C] Busca por rótulo e grau");
         TGrafo g = novoGrafoDeTeste();
         g.insereA(0, 1, 0.80f);
         g.insereA(0, 2, 0.60f);
@@ -131,10 +107,10 @@ public class TesteTGrafo {
     }
 
     // ------------------------------------------------------------------
-    // Bloco D — depois dos TODOs 3 e 4: inserir/remover vértice
+    // bloco D — inserir/remover vértice
     // ------------------------------------------------------------------
     private static void blocoD_vertices() {
-        System.out.println("\n[D] Inserir e remover vértice (TODOs 3 e 4)");
+        System.out.println("\n[D] Inserir e remover vértice");
         TGrafo g = novoGrafoDeTeste();
         g.insereA(0, 1, 0.80f);   // Djavan - Caetano
         g.insereA(1, 2, 0.70f);   // Caetano - Marisa
@@ -150,7 +126,7 @@ public class TesteTGrafo {
         confere("artista duplicado é rejeitado", g.insereV("tim maia", 0f) == -1);
         confere("rótulo vazio é rejeitado", g.insereV("  ", 0f) == -1);
 
-        // Remover um vértice do MEIO: Caetano (1), que tem grau 2
+        // remover um vértice do MEIO: Caetano (1), que tem grau 2
         confere("removeV(1) devolve true", g.removeV(1));
         confere("n == 6 depois de remover", g.getN() == 6);
         confere("m desconta as 2 arestas de Caetano", g.getM() == 2);
@@ -160,7 +136,7 @@ public class TesteTGrafo {
                 g.existeAresta(1, 4) && igual(g.getPesoAresta(1, 4), 0.40f));
         confere("aresta Tim Maia-Djavan sobreviveu (agora 5-0)", g.existeAresta(5, 0));
 
-        // Remover o PRIMEIRO e o ÚLTIMO
+        // remover o PRIMEIRO e o ÚLTIMO
         confere("removeV(0) (primeiro) devolve true", g.removeV(0));
         confere("m == 1 depois de remover Djavan", g.getM() == 1);
         confere("removeV(último) devolve true", g.removeV(g.getN() - 1));
@@ -169,10 +145,10 @@ public class TesteTGrafo {
     }
 
     // ------------------------------------------------------------------
-    // Bloco E — TODOs 8 a 10: ler -> gravar -> ler de novo
+    // bloco E — ler -> gravar -> ler de novo
     // ------------------------------------------------------------------
     private static void blocoE_arquivo() {
-        System.out.println("\n[E] Ler -> gravar -> ler (TODOs 8 a 10)");
+        System.out.println("\n[E] Ler -> gravar -> ler");
         try {
             java.io.File tmp = java.io.File.createTempFile("grafo_teste", ".txt");
             tmp.deleteOnExit();
@@ -186,7 +162,7 @@ public class TesteTGrafo {
             confere("peso preservado com 4 casas", igual(lido.getPesoAresta(1, 0), 0.8234f));
             confere("rótulo preservado", "Chico Buarque".equals(lido.getRotulo(4)));
 
-            // Grafo orientado com peso no vértice (tipo 5)
+            // grafo orientado com peso no vértice (tipo 5)
             TGrafo o = new TGrafo(5, 3);
             o.setVertice(0, "A", 1.5f);
             o.setVertice(1, "B", 2f);
