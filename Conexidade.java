@@ -1,161 +1,219 @@
 // integrantes:
-//   Enrique Cipolla Martins RA 10427834
-//   Henrique Ferreira Marciano RA 10439797
-//   Pedro Henrique Saraiva Arruda RA 10437747
+//   Enrique Cipolla Martins ........ RA 10427834
+//   Henrique Ferreira Marciano ..... RA 10439797
+//   Pedro Henrique Saraiva Arruda .. RA 10437747
 
-import java.util.Scanner;
+public class Conexidade {
 
-public class ConexSom {
+    // ponto de entrada da opção i).
+    // não orientado: conexo/desconexo e, se desconexo, os artistas de cada
+    // componente ("ilhas" de onde a recomendação não consegue sair).
+    // orientado: categoria C0–C3, componentes fortemente conexas (FCONEX)
+    // e o grafo reduzido.
+    public static void apresentar(TGrafo g) {
+        if (!g.isOrientado()) {
+            int[] comp = componentesConexas(g);
+            int qtd = contarComponentes(comp);
+            System.out.println(qtd == 1 ? "Grafo CONEXO." : "Grafo DESCONEXO (" + qtd + " componentes).");
+            if (qtd > 1) {
+                listarComponentes(g, comp, qtd);
+            }
+        } else {
+            int c = categoria(g);
+            System.out.println("Categoria de conexidade: C" + c + " (" + nomeCategoria(c) + ")");
+            int[] comp = fconex(g);
+            int qtd = contarComponentes(comp);
+            System.out.println("Componentes fortemente conexas (FCONEX): " + qtd);
+            listarComponentes(g, comp, qtd);
+            TGrafo reduzido = grafoReduzido(g, comp);
+            System.out.println("Grafo reduzido (" + reduzido.getN() + " vértices):");
+            reduzido.show();
+        }
+    }
 
-    private static final String ARQUIVO = "grafo.txt";
-    private static TGrafo grafo = null;          // grafo atualmente em memória
-    private static final Scanner in = new Scanner(System.in, "UTF-8");
+    // nome por extenso de cada categoria de conexidade.
+    private static String nomeCategoria(int c) {
+        switch (c) {
+            case 3: return "fortemente conexo";
+            case 2: return "semi-fortemente conexo";
+            case 1: return "simplesmente conexo";
+            default: return "desconexo";
+        }
+    }
 
-    public static void main(String[] args) {
-        char opcao;
-        do {
-            mostrarMenu();
-            String linha = in.nextLine().trim().toLowerCase();
-            opcao = linha.isEmpty() ? ' ' : linha.charAt(0);
-            System.out.println();
-
-            try {
-                switch (opcao) {
-                    case 'a': lerArquivo(); break;
-                    case 'b': gravarArquivo(); break;
-                    case 'c': inserirVertice(); break;
-                    case 'd': inserirAresta(); break;
-                    case 'e': removerVertice(); break;
-                    case 'f': removerAresta(); break;
-                    case 'g': if (temGrafo()) ArquivoGrafo.mostrarConteudo(grafo); break;
-                    case 'h': if (temGrafo()) grafo.show(); break;
-                    case 'i': if (temGrafo()) Conexidade.apresentar(grafo); break;
-                    case 'j': System.out.println("Encerrando o ConexSom. Até mais!"); break;
-                    default:  System.out.println("Opção inválida.");
+    // imprime os rótulos dos vértices de cada componente (C0, C1, ...).
+    private static void listarComponentes(TGrafo g, int[] comp, int qtd) {
+        for (int c = 0; c < qtd; c++) {
+            StringBuilder sb = new StringBuilder("  C" + c + ": ");
+            boolean primeiro = true;
+            for (int v = 0; v < comp.length; v++) {
+                if (comp[v] == c) {
+                    if (!primeiro) sb.append(", ");
+                    sb.append(g.getRotulo(v));
+                    primeiro = false;
                 }
-            } catch (Exception e) {
-                // nenhuma entrada errada deve derrubar o programa.
-                System.out.println("Erro: " + e.getMessage());
             }
-        } while (opcao != 'j');
+            System.out.println(sb);
+        }
     }
 
-    // o enunciado exige um TÍTULO coerente com o problema acima do menu.
-    private static void mostrarMenu() {
-        System.out.println();
-        System.out.println("==============================================================");
-        System.out.println("   ConexSom — Recomendação Musical por Similaridade de Artistas");
-        System.out.println("==============================================================");
-        System.out.println(" a) Ler dados do arquivo grafo.txt");
-        System.out.println(" b) Gravar dados no arquivo grafo.txt");
-        System.out.println(" c) Inserir vértice (artista)");
-        System.out.println(" d) Inserir aresta (similaridade)");
-        System.out.println(" e) Remover vértice (artista)");
-        System.out.println(" f) Remover aresta (similaridade)");
-        System.out.println(" g) Mostrar conteúdo do arquivo");
-        System.out.println(" h) Mostrar grafo (matriz de adjacência)");
-        System.out.println(" i) Apresentar a conexidade do grafo e o reduzido");
-        System.out.println(" j) Encerrar a aplicação");
-        System.out.print("Escolha: ");
+    // grafo NÃO orientado: devolve comp[v] = id da componente de v (0, 1, 2...).
+    // busca em largura a partir de cada vértice ainda não visitado; todos os
+    // alcançados recebem o mesmo id. Conexo <=> só existe a componente 0.
+    public static int[] componentesConexas(TGrafo g) {
+        int n = g.getN();
+        int[] comp = new int[n];
+        java.util.Arrays.fill(comp, -1); // -1 = ainda não visitado
+
+        int id = 0;
+        for (int inicio = 0; inicio < n; inicio++) {
+            if (comp[inicio] != -1) {
+                continue; // já pertence a uma componente encontrada antes
+            }
+            java.util.Queue<Integer> fila = new java.util.LinkedList<>();
+            fila.add(inicio);
+            comp[inicio] = id;
+            while (!fila.isEmpty()) {
+                int v = fila.poll();
+                for (int w = 0; w < n; w++) {
+                    if (g.existeAresta(v, w) && comp[w] == -1) {
+                        comp[w] = id;
+                        fila.add(w);
+                    }
+                }
+            }
+            id++; // essa componente acabou; a próxima leva o próximo id
+        }
+        return comp;
     }
 
-    // ------------------------------------------------------------------
-    // ações do menu
-    // ------------------------------------------------------------------
-
-    private static void lerArquivo() throws Exception {
-        grafo = ArquivoGrafo.ler(ARQUIVO);
-        System.out.printf("Grafo carregado: %d artistas, %d similaridades.%n",
-                grafo.getN(), grafo.getM());
+    public static int contarComponentes(int[] comp) {
+        int max = -1;
+        for (int c : comp) max = Math.max(max, c);
+        return max + 1;
     }
 
-    private static void gravarArquivo() throws Exception {
-        if (!temGrafo()) return;
-        ArquivoGrafo.gravar(grafo, ARQUIVO);
-        System.out.printf("Grafo gravado em %s (%d artistas, %d similaridades).%n",
-                ARQUIVO, grafo.getN(), grafo.getM());
-    }
+    // grafo ORIENTADO: categoria de conexidade.
+    //   C3 — fortemente conexo (todo par se alcança nos dois sentidos)
+    //   C2 — semi-fortemente conexo (todo par se alcança em pelo menos um sentido)
+    //   C1 — simplesmente conexo (o grafo subjacente não orientado é conexo)
+    //   C0 — desconexo
+    // usa a matriz de alcançabilidade (BFS de cada vértice):
+    // alc[v][w] = true se existe caminho v -> w.
+    public static int categoria(TGrafo g) {
+        int n = g.getN();
+        boolean[][] alc = alcancabilidade(g);
 
-    private static void inserirVertice() {
-        if (!temGrafo()) return;
-        String nome = lerTexto("Nome do artista: ");
-        float peso = 0f;
-        if (grafo.temPesoVertice()) peso = lerFloat("Peso do vértice: ");
-        int v = grafo.insereV(nome, peso);
-        System.out.println(v >= 0 ? "Artista inserido com índice " + v + "."
-                                  : "Não foi possível inserir o artista.");
-    }
-
-    private static void inserirAresta() {
-        if (!temGrafo()) return;
-        int v = lerVertice("Artista 1 (índice ou nome): ");
-        int w = lerVertice("Artista 2 (índice ou nome): ");
-        float peso = 1f;
-        if (grafo.temPesoAresta()) {
-            peso = lerFloat("Similaridade (0 a 1): ");
-            // no modelo ConexSom a similaridade fica em (0, 1]
-            if (!(peso > 0f && peso <= 1f)) {
-                System.out.println("Similaridade inválida: use um valor maior que 0 e até 1.");
-                return;
+        boolean fortementeConexo = true;
+        boolean semiFortementeConexo = true;
+        for (int v = 0; v < n; v++) {
+            for (int w = v + 1; w < n; w++) {
+                boolean vAlcancaW = alc[v][w];
+                boolean wAlcancaV = alc[w][v];
+                if (!(vAlcancaW && wAlcancaV)) {
+                    fortementeConexo = false;
+                }
+                if (!(vAlcancaW || wAlcancaV)) {
+                    semiFortementeConexo = false;
+                }
             }
         }
-        System.out.println(grafo.insereA(v, w, peso) ? "Aresta inserida."
-                : "Não foi possível inserir (vértice inválido, laço ou aresta já existente).");
+        if (fortementeConexo) return 3;
+        if (semiFortementeConexo) return 2;
+        if (conexoIgnorandoDirecao(g)) return 1;
+        return 0;
     }
 
-    private static void removerVertice() {
-        if (!temGrafo()) return;
-        int v = lerVertice("Artista a remover (índice ou nome): ");
-        if (!grafo.verticeValido(v)) {
-            System.out.println("Vértice inválido.");
-            return;
+    // alc[v][w] == true se existe caminho orientado de v até w.
+    private static boolean[][] alcancabilidade(TGrafo g) {
+        int n = g.getN();
+        boolean[][] alc = new boolean[n][n];
+        for (int origem = 0; origem < n; origem++) {
+            boolean[] visitado = new boolean[n];
+            java.util.Queue<Integer> fila = new java.util.LinkedList<>();
+            fila.add(origem);
+            visitado[origem] = true;
+            while (!fila.isEmpty()) {
+                int v = fila.poll();
+                for (int w = 0; w < n; w++) {
+                    if (g.existeAresta(v, w) && !visitado[w]) {
+                        visitado[w] = true;
+                        fila.add(w);
+                    }
+                }
+            }
+            alc[origem] = visitado;
         }
-        String nome = grafo.getRotulo(v);
-        int ultimo = grafo.getN() - 1;
-        grafo.removeV(v);
-        System.out.println("Artista \"" + nome + "\" removido (e suas arestas).");
-        if (v < ultimo) {
-            // a matriz é compactada, então os vértices depois de v andam uma posição
-            System.out.println("Atenção: os artistas de índice " + (v + 1) + " a " + ultimo
-                    + " passaram a ter o índice anterior (" + v + " a " + (ultimo - 1) + ").");
+        return alc;
+    }
+
+    // conexo tratando cada aresta como se fosse nos dois sentidos (só para C1/C0).
+    private static boolean conexoIgnorandoDirecao(TGrafo g) {
+        int n = g.getN();
+        if (n == 0) return true;
+        boolean[] visitado = new boolean[n];
+        java.util.Queue<Integer> fila = new java.util.LinkedList<>();
+        fila.add(0);
+        visitado[0] = true;
+        int contador = 1;
+        while (!fila.isEmpty()) {
+            int v = fila.poll();
+            for (int w = 0; w < n; w++) {
+                if (!visitado[w] && (g.existeAresta(v, w) || g.existeAresta(w, v))) {
+                    visitado[w] = true;
+                    contador++;
+                    fila.add(w);
+                }
+            }
         }
+        return contador == n;
     }
 
-    private static void removerAresta() {
-        if (!temGrafo()) return;
-        int v = lerVertice("Artista 1 (índice ou nome): ");
-        int w = lerVertice("Artista 2 (índice ou nome): ");
-        System.out.println(grafo.removeA(v, w) ? "Aresta removida." : "Aresta inexistente.");
-    }
+    // FCONEX — componentes fortemente conexas. comp[v] = id da componente.
+    // enquanto houver vértice v sem componente:
+    //   R+(v) = fecho transitivo direto  (quem v alcança: alc[v][w])
+    //   R-(v) = fecho transitivo inverso (quem alcança v: alc[w][v])
+    //   componente de v = R+(v) ∩ R-(v), entre os vértices ainda não marcados.
+    public static int[] fconex(TGrafo g) {
+        int n = g.getN();
+        boolean[][] alc = alcancabilidade(g);
+        int[] comp = new int[n];
+        java.util.Arrays.fill(comp, -1);
 
-    // ------------------------------------------------------------------
-    // leitura de entrada do usuário
-    // ------------------------------------------------------------------
-
-    private static boolean temGrafo() {
-        if (grafo == null) {
-            System.out.println("Nenhum grafo em memória. Use a opção a) primeiro.");
-            return false;
+        int id = 0;
+        for (int v = 0; v < n; v++) {
+            if (comp[v] != -1) {
+                continue;
+            }
+            for (int w = 0; w < n; w++) {
+                if (comp[w] == -1 && alc[v][w] && alc[w][v]) {
+                    comp[w] = id;
+                }
+            }
+            id++;
         }
-        return true;
+        return comp;
     }
 
-    private static String lerTexto(String msg) {
-        System.out.print(msg);
-        return in.nextLine().trim();
-    }
+    // grafo reduzido: cada componente vira um vértice; existe aresta Ci -> Cj
+    // se existe alguma aresta de um vértice de Ci para um vértice de Cj (i != j).
+    // o reduzido é orientado sem peso (tipo 4) e sempre acíclico.
+    public static TGrafo grafoReduzido(TGrafo g, int[] comp) {
+        int k = contarComponentes(comp);
+        TGrafo reduzido = new TGrafo(4, k); // tipo 4: orientado, sem peso
 
-    private static float lerFloat(String msg) {
-        return ArquivoGrafo.parseFloat(lerTexto(msg));
-    }
-
-    // aceita número do vértice OU nome do artista.
-    private static int lerVertice(String msg) {
-        String s = lerTexto(msg);
-        try {
-            return Integer.parseInt(s);
-        } catch (NumberFormatException e) {
-            return grafo.buscaPorRotulo(s);
+        for (int c = 0; c < k; c++) {
+            reduzido.setVertice(c, "C" + c, 0f);
         }
+
+        int n = g.getN();
+        for (int v = 0; v < n; v++) {
+            for (int w = 0; w < n; w++) {
+                if (g.existeAresta(v, w) && comp[v] != comp[w]) {
+                    reduzido.insereA(comp[v], comp[w], 1f);
+                }
+            }
+        }
+        return reduzido;
     }
 }
