@@ -1,7 +1,7 @@
 // integrantes:
-//   Enrique Cipolla Martins ........ RA 10427834
-//   Henrique Ferreira Marciano ..... RA 10439797
-//   Pedro Henrique Saraiva Arruda .. RA 10437747
+//   Enrique Cipolla Martins RA 10427834
+//   Henrique Ferreira Marciano RA 10439797
+//   Pedro Henrique Saraiva Arruda RA 10437747
 
 import java.util.Arrays;
 
