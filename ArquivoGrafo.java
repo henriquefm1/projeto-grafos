@@ -1,31 +1,7 @@
-/*
- * =====================================================================
- * ConexSom — Recomendação Musical por Similaridade entre Artistas
- * Arquivo : ArquivoGrafo.java
- *
- * Integrantes:
- *   Enrique Cipolla Martins ........ RA 10427834
- *   Henrique Ferreira Marciano ..... RA 10439797
- *   Pedro Henrique Saraiva Arruda .. RA 10437747
- *
- * Síntese:
- *   Leitura (opção a), gravação (opção b) e exibição formatada (opção g)
- *   do arquivo grafo.txt, no formato do enunciado:
- *
- *     tipo
- *     n
- *     0 "Nome do artista 0" [peso]      <- peso só nos tipos 1,3,5,7
- *     ...
- *     m
- *     v w [peso]                        <- peso só nos tipos 2,3,6,7
- *     ...
- *
- * Histórico de alterações (data — autor — descrição):
- *   23/09/2026 — Enrique Cipolla Martins — Versão inicial (leitura)
- *   24/09/2026 — Henrique Ferreira Marciano — Validações da leitura, gravação
- *                e exibição formatada (TODOs 8 a 11)
- * =====================================================================
- */
+// integrantes:
+//   Enrique Cipolla Martins RA 10427834
+//   Henrique Ferreira Marciano RA 10439797
+//   Pedro Henrique Saraiva Arruda RA 10437747
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -37,20 +13,16 @@ import java.util.regex.Pattern;
 
 public class ArquivoGrafo {
 
-    /** Captura: índice, "rótulo entre aspas" e um peso opcional (com ou sem aspas). */
+    // captura: índice, "rótulo entre aspas" e um peso opcional (com ou sem aspas).
     private static final Pattern LINHA_VERTICE =
             Pattern.compile("^(\\d+)\\s+\"([^\"]*)\"(?:\\s+\"?([-\\d.,]+)\"?)?\\s*$");
 
-    /**
-     * Opção a) — lê o grafo.txt e monta o TGrafo em memória.
-     *
-     * Convenção do ConexSom: no grafo NÃO orientado cada aresta aparece
-     * UMA única vez no arquivo (v w peso) e m é o número real de arestas.
-     * Linhas repetidas (inclusive "w v" depois de "v w") ou inválidas são
-     * ignoradas com aviso, e o total efetivamente carregado é informado.
-     *
-     * @throws IOException com mensagem clara se o arquivo estiver mal formatado.
-     */
+    // opção a) — lê o grafo.txt e monta o TGrafo em memória.
+    // convenção do ConexSom: no grafo NÃO orientado cada aresta aparece
+    // UMA única vez no arquivo (v w peso) e m é o número real de arestas.
+    // linhas repetidas (inclusive "w v" depois de "v w") ou inválidas são
+    // ignoradas com aviso, e o total efetivamente carregado é informado.
+    // lança IOException com mensagem clara se o arquivo estiver mal formatado.
     public static TGrafo ler(String caminho) throws IOException {
         List<String> linhas = lerLinhasUteis(caminho);
         int[] pos = {0};   // posição atual (vetor para poder avançar dentro de proximaLinha)
@@ -105,11 +77,9 @@ public class ArquivoGrafo {
         return g;
     }
 
-    /**
-     * Opção b) — grava o grafo da memória no MESMO formato da leitura.
-     * No não orientado grava só w > v (cada aresta uma vez); no orientado
-     * percorre a matriz inteira. Pesos sempre com ponto decimal.
-     */
+    // opção b) — grava o grafo da memória no MESMO formato da leitura.
+    // no não orientado grava só w > v (cada aresta uma vez); no orientado
+    // percorre a matriz inteira. Pesos sempre com ponto decimal.
     public static void gravar(TGrafo g, String caminho) throws IOException {
         try (PrintWriter pw = new PrintWriter(new OutputStreamWriter(
                 new FileOutputStream(caminho), StandardCharsets.UTF_8))) {
@@ -136,11 +106,9 @@ public class ArquivoGrafo {
         }
     }
 
-    /**
-     * Opção g) — mostra o conteúdo do grafo de forma legível:
-     * resumo (tipo por extenso, n, m, grau médio), lista de artistas com
-     * grau e lista de similaridades com os nomes dos dois artistas.
-     */
+    // opção g) — mostra o conteúdo do grafo de forma legível:
+    // resumo (tipo por extenso, n, m, grau médio), lista de artistas com
+    // grau e lista de similaridades com os nomes dos dois artistas.
     public static void mostrarConteudo(TGrafo g) {
         String titulo = " ConexSom — conteúdo do grafo.txt ";
         String barra = "═".repeat(titulo.length());
@@ -191,10 +159,10 @@ public class ArquivoGrafo {
     }
 
     // ------------------------------------------------------------------
-    // Auxiliares
+    // auxiliares
     // ------------------------------------------------------------------
 
-    /** Lê o arquivo em UTF-8 (acentos nos nomes!) ignorando linhas em branco. */
+    // lê o arquivo em UTF-8 (acentos nos nomes!) ignorando linhas em branco.
     private static List<String> lerLinhasUteis(String caminho) throws IOException {
         List<String> linhas = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(
@@ -207,7 +175,7 @@ public class ArquivoGrafo {
         return linhas;
     }
 
-    /** Devolve a próxima linha útil ou lança erro dizendo o que faltou. */
+    // devolve a próxima linha útil ou lança erro dizendo o que faltou.
     private static String proximaLinha(List<String> linhas, int[] pos, String oQue) throws IOException {
         if (pos[0] >= linhas.size()) {
             throw new IOException("Arquivo terminou antes do esperado (faltou: " + oQue + ").");
@@ -215,7 +183,7 @@ public class ArquivoGrafo {
         return linhas.get(pos[0]++);
     }
 
-    /** Converte para int com mensagem clara em caso de erro. */
+    // converte para int com mensagem clara em caso de erro.
     private static int lerInteiro(String s, String oQue) throws IOException {
         try {
             return Integer.parseInt(s.trim());
@@ -224,12 +192,12 @@ public class ArquivoGrafo {
         }
     }
 
-    /** Aceita "0.82" e "0,82". */
+    // aceita "0.82" e "0,82".
     static float parseFloat(String s) {
         return Float.parseFloat(s.replace(',', '.'));
     }
 
-    /** Formata peso sempre com ponto (para gravação). */
+    // formata peso sempre com ponto (para gravação).
     static String formatarPeso(float p) {
         return String.format(Locale.US, "%.4f", p);
     }
