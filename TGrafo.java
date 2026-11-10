@@ -275,4 +275,21 @@ public class TGrafo {
             System.out.println(sb);
         }
     }
+    // ==================================================================
+    // TODO [PARTE 3 - ITEM 1: ALGORITMO DE SOLUÇÃO DO PROBLEMA REAL]:
+    // Implementar a função correspondente ao item 1 do enunciado.
+    // Exemplo: Ford-Fulkerson (Fluxo Máximo), Dijkstra/Caminho Mínimo ou Centralidade.
+    // Se utilizar técnica de material complementar, sinalizar a fundamentação.
+    // ==================================================================
+
+    // ==================================================================
+    // TODO [PARTE 3 - ITEM 2: ANÁLISE DE CARACTERÍSTICAS (MÍNIMO 3 OU 4)]:
+    // Implementar os métodos para descobrir as características do grafo:
+    // 1) Característica 1: Grau dos Vértices / Grau Médio (já existe grau(), criar formato de exportação/análise se necessário)
+    // 2) Característica 2: Verificação de Grafo Euleriano / Percurso Euleriano
+    // 3) Característica 3: Coloração de Grafos / Quantidade de Partições
+    // 4) Característica 4 (se aplicável): Verificação de Grafo/Ciclo Hamiltoniano ou Componentes Conexos
+    // ==================================================================
+
 }
+

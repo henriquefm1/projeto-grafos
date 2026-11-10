@@ -1,3 +1,13 @@
+// TODO [CABEÇALHO OBRIGATÓRIO DE ACORDO COM A PARTE 3]:
+// Integrantes:
+//   Enrique Cipolla Martins | RA: 10427834
+//   Henrique Ferreira Marciano | RA: 10439797
+//   Pedro Henrique Saraiva Arruda | RA: 10437747
+// Síntese do Conteúdo: Classe de interface de usuário (Terminal) e menu de opções do projeto ConexSom
+// Histórico de Alterações:
+// Data       | Autor                   | Descrição
+// DD/MM/2026 | [Nome do Integrante]    | Atualização para a Parte 3 - Adição das opções do menu (Solução + Características)
+
 // integrantes:
 //   Enrique Cipolla Martins RA 10427834
 //   Henrique Ferreira Marciano RA 10439797
@@ -30,6 +40,9 @@ public class ConexSom {
                     case 'g': if (temGrafo()) ArquivoGrafo.mostrarConteudo(grafo); break;
                     case 'h': if (temGrafo()) grafo.show(); break;
                     case 'i': if (temGrafo()) Conexidade.apresentar(grafo); break;
+                    // TODO [PARTE 3 - SWITCH CASE DAS NOVAS OPÇÕES]:
+                    // case '1': if (temGrafo()) investigarSolucaoProblema(); break;
+                    // case '2': if (temGrafo()) analisarCaracteristicasGrafo(); break;
                     case 'j': System.out.println("Encerrando o ConexSom. Até mais!"); break;
                     default:  System.out.println("Opção inválida.");
                 }
@@ -55,6 +68,9 @@ public class ConexSom {
         System.out.println(" g) Mostrar conteúdo do arquivo");
         System.out.println(" h) Mostrar grafo (matriz de adjacência)");
         System.out.println(" i) Apresentar a conexidade do grafo e o reduzido");
+        // TODO [PARTE 3 - ITENS DO MENU DO ENUNCIADO]:
+        // System.out.println(" 1) Investigar solução para o problema real (Algoritmo Principal / Ford-Fulkerson)");
+        // System.out.println(" 2) Descobrir características do grafo (Graus, Euleriano, Coloração, Hamiltoniano)");
         System.out.println(" j) Encerrar a aplicação");
         System.out.print("Escolha: ");
     }
@@ -127,6 +143,25 @@ public class ConexSom {
         int w = lerVertice("Artista 2 (índice ou nome): ");
         System.out.println(grafo.removeA(v, w) ? "Aresta removida." : "Aresta inexistente.");
     }
+
+    // ==================================================================
+    // TODO [PARTE 3 - MÉTODOS HANDLERS DAS NOVAS FUNCIONALIDADES]:
+    //
+    // private static void investigarSolucaoProblema() {
+    //     System.out.println("--- Investigação de Solução do Problema Real (Item 1) ---");
+    //     // Ler parâmetros necessários (ex: origem/destino para fluxo máximo ou caminho)
+    //     // Executar a técnica e exibir os resultados detalhados
+    // }
+    //
+    // private static void analisarCaracteristicasGrafo() {
+    //     System.out.println("--- Análise de Características do Grafo (Item 2) ---");
+    //     // Exibir submenu ou executar sequencialmente as 3 ou 4 características exigidas:
+    //     // 1) Análise de Grau dos Vértices e Grau Médio
+    //     // 2) Verificação de Grafo/Caminho Euleriano
+    //     // 3) Coloração de Grafos (Particionamento)
+    //     // 4) Verificação de Grafo/Ciclo Hamiltoniano ou Componentes Conexos
+    // }
+    // ==================================================================
 
     // ------------------------------------------------------------------
     // leitura de entrada do usuário
