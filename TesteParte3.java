@@ -12,7 +12,7 @@
  *   Testes reproduzíveis da Parte 3 (Recomendacao e Caracteristicas) em
  *   grafos pequenos com resposta conhecida (K5, C6, P4, estrela, Petersen,
  *   exemplo do ConexSom) e num grafo aleatório de 100 vértices.
- *   Requer TGrafo.insereA funcionando.
+ *   Usa TGrafo.insereA e ArquivoGrafo.
  *
  *   Executar:
  *     javac -encoding UTF-8 -d bin src/*.java
@@ -20,9 +20,14 @@
  *
  * Histórico de alterações (data — autor — descrição):
  *   11/11/2026 — Henrique Ferreira Marciano — Versão inicial (Parte 3)
+ *   19/11/2026 — Henrique Ferreira Marciano — Teste de "Descobertas" sem vizinhos diretos (opção 1)
+ *   19/11/2026 — Henrique Ferreira Marciano — Teste da opção g) (conteúdo efetivo do arquivo, sem alterações não gravadas)
  * =====================================================================
  */
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Random;
 
@@ -34,6 +39,8 @@ public class TesteParte3 {
         testarRecomendacao();
         testarCaracteristicasConhecidas();
         testarGrafoAleatorio();
+        testarDescobertasSemVizinhosDiretos();
+        testarMostrarConteudoArquivo();
         System.out.println();
         System.out.println(ok + " verificações corretas, " + falhas + " falhas.");
         if (falhas > 0) System.exit(1);
@@ -230,6 +237,79 @@ public class TesteParte3 {
         for (int i = 0; i < n; i++) g.setVertice(i, "V" + i, 0f);
         for (int i = 0; i < n; i++) g.insereA(i, (i + 1) % n, 1f);
         return g;
+    }
+
+    // um vizinho direto pode ter melhor caminho INDIRETO (produto maior que a aresta);
+    // mesmo assim, ele não é uma "descoberta".
+    private static void testarDescobertasSemVizinhosDiretos() {
+        System.out.println("== Opção 1) — descobertas não incluem vizinhos diretos ==");
+        // 0-1 = 0,80 direto; mas 0-2-1 = 0,99 * 0,99 = 0,98 > 0,80. O artista 3 só é alcançado via 1.
+        TGrafo g = grafo(4, new double[][] {{0, 1, 0.80}, {0, 2, 0.99}, {2, 1, 0.99}, {1, 3, 0.70}});
+        try {
+            String saida = capturar(() ->
+                    Recomendacao.apresentar(g, new java.util.Scanner("V0\n\n")));
+            String descobertas = saida.substring(saida.indexOf("Descobertas"));
+            confere("V1 (vizinho direto) aparece na lista de vizinhos", saida.indexOf("V1") >= 0
+                    && saida.indexOf("V1") < saida.indexOf("Descobertas"));
+            confere("V1 não aparece em \"Descobertas\" (como artista sugerido)", !descobertas.matches("(?s).*\\d\\. V1 .*"));
+            confere("V2 (vizinho direto) não aparece em \"Descobertas\"", !descobertas.matches("(?s).*\\d\\. V2 .*"));
+            confere("V3 (sem ligação direta) aparece em \"Descobertas\" via V1",
+                    descobertas.contains("V3") && descobertas.contains("via V1"));
+        } catch (Exception e) {
+            confere("opção 1) sem exceção inesperada: " + e, false);
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // opção g): deve mostrar o que está GRAVADO, não o grafo em memória.
+
+    private static void testarMostrarConteudoArquivo() {
+        System.out.println("== Opção g) — conteúdo efetivo do arquivo ==");
+        try {
+            File tmp = File.createTempFile("conexsom_g_", ".txt");
+            tmp.deleteOnExit();
+            TGrafo g = grafo(4, new double[][] {{0, 1, 0.80}, {1, 2, 0.60}});
+            ArquivoGrafo.gravar(g, tmp.getPath());
+
+            // 1) memória igual ao arquivo
+            String saida = capturar(() -> ArquivoGrafo.mostrarConteudoArquivo(tmp.getPath(), g));
+            confere("mostra os 4 artistas do arquivo", saida.contains("V0") && saida.contains("V3"));
+            confere("mostra 2 similaridades", saida.contains("2 similaridades"));
+            confere("avisa que memória e arquivo são iguais", saida.contains("igual ao conteúdo do arquivo"));
+
+            // 2) altera a memória SEM gravar: a saída continua sendo a do arquivo
+            g.insereV("Novo", 0f);
+            g.insereA(3, 4, 0.9f);
+            saida = capturar(() -> ArquivoGrafo.mostrarConteudoArquivo(tmp.getPath(), g));
+            confere("não mostra o artista só da memória", !saida.contains("Novo"));
+            confere("continua mostrando 4 artistas e 2 similaridades do arquivo",
+                    saida.contains("4 artistas | 2 similaridades"));
+            confere("avisa alterações não gravadas", saida.contains("difere do arquivo"));
+            confere("arquivo no disco não foi alterado", ArquivoGrafo.ler(tmp.getPath()).getN() == 4);
+
+            // 3) sem grafo em memória: ainda mostra o arquivo
+            saida = capturar(() -> ArquivoGrafo.mostrarConteudoArquivo(tmp.getPath(), null));
+            confere("sem grafo em memória mostra o arquivo", saida.contains("4 artistas"));
+
+            // 4) arquivo inexistente: erro claro
+            boolean erro = false;
+            try { ArquivoGrafo.mostrarConteudoArquivo("nao_existe_xyz.txt", g); }
+            catch (java.io.IOException e) { erro = e.getMessage().contains("não existe"); }
+            confere("arquivo inexistente gera erro claro", erro);
+        } catch (Exception e) {
+            confere("opção g) sem exceção inesperada: " + e, false);
+        }
+    }
+
+    private interface Acao { void executar() throws Exception; }
+
+    // executa a ação e devolve tudo o que ela escreveu na saída padrão.
+    private static String capturar(Acao a) throws Exception {
+        PrintStream original = System.out;
+        ByteArrayOutputStream buf = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(buf, true, "UTF-8"));
+        try { a.executar(); } finally { System.setOut(original); }
+        return buf.toString("UTF-8");
     }
 
     private static int cores(int[] cor) {
