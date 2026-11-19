@@ -203,7 +203,7 @@ public class Recomendacao {
     // Opção do menu
     // ------------------------------------------------------------------
 
-    /** Opção k) do menu: recomendação interativa. */
+    /** Opção 1) do menu: recomendação interativa. */
     public static void apresentar(TGrafo g, Scanner in) {
         System.out.print("Artista de origem (índice ou nome): ");
         int o = resolver(g, in.nextLine());
