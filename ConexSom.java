@@ -13,6 +13,7 @@
 //   Recomendacao (opção 1) e Caracteristicas (opção 2).
 //
 // Histórico de alterações (data — autor — descrição):
+//   19/11/2026 — Henrique Ferreira Marciano — Parte 3: opção g) mostra o arquivo gravado no disco (não depende mais de grafo em memória)
 //   19/11/2026 — Henrique Ferreira Marciano — Parte 3: opções 1) Investigar solução (recomendação) e 2) Características do grafo no menu
 // =====================================================================
 
@@ -40,7 +41,7 @@ public class ConexSom {
                     case 'd': inserirAresta(); break;
                     case 'e': removerVertice(); break;
                     case 'f': removerAresta(); break;
-                    case 'g': if (temGrafo()) ArquivoGrafo.mostrarConteudo(grafo); break;
+                    case 'g': ArquivoGrafo.mostrarConteudoArquivo(ARQUIVO, grafo); break;
                     case 'h': if (temGrafo()) grafo.show(); break;
                     case 'i': if (temGrafo()) Conexidade.apresentar(grafo); break;
                     case '1': if (temGrafo()) investigarSolucaoProblema(); break;
@@ -67,7 +68,7 @@ public class ConexSom {
         System.out.println(" d) Inserir aresta (similaridade)");
         System.out.println(" e) Remover vértice (artista)");
         System.out.println(" f) Remover aresta (similaridade)");
-        System.out.println(" g) Mostrar conteúdo do arquivo");
+        System.out.println(" g) Mostrar conteúdo do arquivo grafo.txt (como está gravado)");
         System.out.println(" h) Mostrar grafo (matriz de adjacência)");
         System.out.println(" i) Apresentar a conexidade do grafo e o reduzido");
         System.out.println(" 1) Investigar solução: recomendar artistas a partir de um artista");
