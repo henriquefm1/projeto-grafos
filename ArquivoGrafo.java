@@ -8,10 +8,14 @@
 //   Pedro Henrique Saraiva Arruda .. RA 10437747
 //
 // Síntese:
-//   Leitura (opção a), gravação (opção b) e exibição formatada (opção g) do
-//   arquivo grafo.txt, no formato definido no enunciado.
+//   Leitura (opção a), gravação (opção b) e exibição do CONTEÚDO DO ARQUIVO
+//   grafo.txt (opção g), no formato definido no enunciado. A opção g lê o
+//   arquivo do disco e o mostra como está gravado; o grafo em memória só é
+//   consultado para avisar se há alterações ainda não gravadas.
 //
 // Histórico de alterações (data — autor — descrição):
+//   19/11/2026 — Henrique Ferreira Marciano — Parte 3: opção g) passa a ler o arquivo do disco
+//       (antes mostrava o grafo em memória, inclusive alterações não gravadas), conforme parecer da Parte 2
 //   19/11/2026 — Henrique Ferreira Marciano — Parte 3: cabeçalho padronizado (síntese e histórico)
 // =====================================================================
 
@@ -118,9 +122,47 @@ public class ArquivoGrafo {
         }
     }
 
-    // opção g) — mostra o conteúdo do grafo de forma legível:
-    // resumo (tipo por extenso, n, m, grau médio), lista de artistas com
-    // grau e lista de similaridades com os nomes dos dois artistas.
+    // opção g) — mostra o conteúdo EFETIVO do arquivo grafo.txt.
+    // lê o arquivo do disco para um grafo temporário (o grafo em memória não é
+    // alterado) e o exibe; em seguida compara com o grafo em memória e avisa
+    // se há alterações ainda não gravadas (opção b).
+    // lança IOException se o arquivo não existir ou estiver mal formatado.
+    public static void mostrarConteudoArquivo(String caminho, TGrafo emMemoria) throws IOException {
+        File f = new File(caminho);
+        if (!f.isFile()) {
+            throw new IOException("O arquivo " + caminho + " não existe. Grave-o com a opção b).");
+        }
+        TGrafo doArquivo = ler(caminho);
+        mostrarConteudo(doArquivo);
+
+        System.out.println();
+        if (emMemoria == null) {
+            System.out.println("(Nenhum grafo em memória: o conteúdo acima é só o do arquivo.)");
+        } else if (iguais(doArquivo, emMemoria)) {
+            System.out.println("O grafo em memória é igual ao conteúdo do arquivo.");
+        } else {
+            System.out.printf("Atenção: o grafo em memória (%d artistas, %d similaridades) difere do arquivo "
+                    + "(%d artistas, %d similaridades). Use a opção b) para gravar as alterações.%n",
+                    emMemoria.getN(), emMemoria.getM(), doArquivo.getN(), doArquivo.getM());
+        }
+    }
+
+    // dois grafos são iguais se têm mesmo tipo, vértices (rótulos e pesos) e arestas (com pesos).
+    public static boolean iguais(TGrafo a, TGrafo b) {
+        if (a.getTipo() != b.getTipo() || a.getN() != b.getN() || a.getM() != b.getM()) return false;
+        for (int v = 0; v < a.getN(); v++) {
+            if (!a.getRotulo(v).equals(b.getRotulo(v))) return false;
+            if (a.temPesoVertice() && a.getPesoVertice(v) != b.getPesoVertice(v)) return false;
+            for (int w = 0; w < a.getN(); w++) {
+                if (a.existeAresta(v, w) != b.existeAresta(v, w)) return false;
+                if (a.existeAresta(v, w) && a.temPesoAresta()
+                        && a.getPesoAresta(v, w) != b.getPesoAresta(v, w)) return false;
+            }
+        }
+        return true;
+    }
+
+    // exibição formatada de um grafo (resumo, artistas com grau e similaridades).
     public static void mostrarConteudo(TGrafo g) {
         String titulo = " ConexSom — conteúdo do grafo.txt ";
         String barra = "═".repeat(titulo.length());
