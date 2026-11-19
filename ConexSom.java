@@ -1,17 +1,20 @@
-// TODO [CABEÇALHO OBRIGATÓRIO DE ACORDO COM A PARTE 3]:
+// =====================================================================
+// ConexSom — Recomendação Musical por Similaridade entre Artistas
+// Arquivo : ConexSom.java
+//
 // Integrantes:
-//   Enrique Cipolla Martins | RA: 10427834
-//   Henrique Ferreira Marciano | RA: 10439797
-//   Pedro Henrique Saraiva Arruda | RA: 10437747
-// Síntese do Conteúdo: Classe de interface de usuário (Terminal) e menu de opções do projeto ConexSom
-// Histórico de Alterações:
-// Data       | Autor                   | Descrição
-// DD/MM/2026 | [Nome do Integrante]    | Atualização para a Parte 3 - Adição das opções do menu (Solução + Características)
-
-// integrantes:
-//   Enrique Cipolla Martins RA 10427834
-//   Henrique Ferreira Marciano RA 10439797
-//   Pedro Henrique Saraiva Arruda RA 10437747
+//   Enrique Cipolla Martins ........ RA 10427834
+//   Henrique Ferreira Marciano ..... RA 10439797
+//   Pedro Henrique Saraiva Arruda .. RA 10437747
+//
+// Síntese:
+//   Classe principal: interface no terminal e menu de opções. Mantém um único
+//   grafo em memória e delega as operações a TGrafo, ArquivoGrafo, Conexidade,
+//   Recomendacao (opção 1) e Caracteristicas (opção 2).
+//
+// Histórico de alterações (data — autor — descrição):
+//   19/11/2026 — Henrique Ferreira Marciano — Parte 3: opções 1) Investigar solução (recomendação) e 2) Características do grafo no menu
+// =====================================================================
 
 import java.util.Scanner;
 
@@ -40,9 +43,8 @@ public class ConexSom {
                     case 'g': if (temGrafo()) ArquivoGrafo.mostrarConteudo(grafo); break;
                     case 'h': if (temGrafo()) grafo.show(); break;
                     case 'i': if (temGrafo()) Conexidade.apresentar(grafo); break;
-                    // TODO [PARTE 3 - SWITCH CASE DAS NOVAS OPÇÕES]:
-                    // case '1': if (temGrafo()) investigarSolucaoProblema(); break;
-                    // case '2': if (temGrafo()) analisarCaracteristicasGrafo(); break;
+                    case '1': if (temGrafo()) investigarSolucaoProblema(); break;
+                    case '2': if (temGrafo()) analisarCaracteristicasGrafo(); break;
                     case 'j': System.out.println("Encerrando o ConexSom. Até mais!"); break;
                     default:  System.out.println("Opção inválida.");
                 }
@@ -68,9 +70,8 @@ public class ConexSom {
         System.out.println(" g) Mostrar conteúdo do arquivo");
         System.out.println(" h) Mostrar grafo (matriz de adjacência)");
         System.out.println(" i) Apresentar a conexidade do grafo e o reduzido");
-        // TODO [PARTE 3 - ITENS DO MENU DO ENUNCIADO]:
-        // System.out.println(" 1) Investigar solução para o problema real (Algoritmo Principal / Ford-Fulkerson)");
-        // System.out.println(" 2) Descobrir características do grafo (Graus, Euleriano, Coloração, Hamiltoniano)");
+        System.out.println(" 1) Investigar solução: recomendar artistas a partir de um artista");
+        System.out.println(" 2) Descobrir características do grafo (graus, coloração, Euler, Hamilton)");
         System.out.println(" j) Encerrar a aplicação");
         System.out.print("Escolha: ");
     }
@@ -144,24 +145,18 @@ public class ConexSom {
         System.out.println(grafo.removeA(v, w) ? "Aresta removida." : "Aresta inexistente.");
     }
 
-    // ==================================================================
-    // TODO [PARTE 3 - MÉTODOS HANDLERS DAS NOVAS FUNCIONALIDADES]:
-    //
-    // private static void investigarSolucaoProblema() {
-    //     System.out.println("--- Investigação de Solução do Problema Real (Item 1) ---");
-    //     // Ler parâmetros necessários (ex: origem/destino para fluxo máximo ou caminho)
-    //     // Executar a técnica e exibir os resultados detalhados
-    // }
-    //
-    // private static void analisarCaracteristicasGrafo() {
-    //     System.out.println("--- Análise de Características do Grafo (Item 2) ---");
-    //     // Exibir submenu ou executar sequencialmente as 3 ou 4 características exigidas:
-    //     // 1) Análise de Grau dos Vértices e Grau Médio
-    //     // 2) Verificação de Grafo/Caminho Euleriano
-    //     // 3) Coloração de Grafos (Particionamento)
-    //     // 4) Verificação de Grafo/Ciclo Hamiltoniano ou Componentes Conexos
-    // }
-    // ==================================================================
+    // opção 1) — item 1 da Parte 3: recomendação por similaridade
+    // (vizinhos mais similares, descobertas por vizinhos de vizinhos e caminho de maior similaridade).
+    private static void investigarSolucaoProblema() {
+        System.out.println("--- Investigação de solução: recomendação de artistas ---");
+        Recomendacao.apresentar(grafo, in);
+    }
+
+    // opção 2) — item 2 da Parte 3: graus, coloração, Euler e Hamilton.
+    private static void analisarCaracteristicasGrafo() {
+        System.out.println("--- Características do grafo ---");
+        Caracteristicas.apresentar(grafo);
+    }
 
     // ------------------------------------------------------------------
     // leitura de entrada do usuário
