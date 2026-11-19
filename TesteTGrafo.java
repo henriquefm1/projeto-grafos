@@ -1,7 +1,20 @@
-// integrantes:
-//   Enrique Cipolla Martins RA 10427834
-//   Henrique Ferreira Marciano RA 10439797
-//   Pedro Henrique Saraiva Arruda RA 10437747
+// =====================================================================
+// ConexSom — Recomendação Musical por Similaridade entre Artistas
+// Arquivo : TesteTGrafo.java
+//
+// Integrantes:
+//   Enrique Cipolla Martins ........ RA 10427834
+//   Henrique Ferreira Marciano ..... RA 10439797
+//   Pedro Henrique Saraiva Arruda .. RA 10437747
+//
+// Síntese:
+//   Testes automáticos de TGrafo, ArquivoGrafo e Conexidade (Parte 2).
+//   Os testes das funcionalidades da Parte 3 estão em TesteParte3.java.
+//   Executar: javac -encoding UTF-8 -d bin *.java && java -cp bin TesteTGrafo
+//
+// Histórico de alterações (data — autor — descrição):
+//   19/11/2026 — Henrique Ferreira Marciano — Parte 3: cabeçalho padronizado (síntese e histórico) e remoção de comentários-modelo
+// =====================================================================
 
 public class TesteTGrafo {
 
@@ -181,42 +194,13 @@ public class TesteTGrafo {
             confere("exceção inesperada: " + e.getMessage(), false);
         }
     }
-    // ==================================================================
-    // TODO [PARTE 3 - BLOCO F: TESTE DA SOLUÇÃO DO PROBLEMA REAL (ITEM 1)]:
-    // private static void blocoF_solucaoProblemaReal() {
-    //     System.out.println("\n[F] Solução do Problema Real (Item 1)");
-    //     // Testar o método implementado em TGrafo para o problema real (ex: Ford-Fulkerson, Dijkstra, etc.)
-    //     // confere("Solução calculada com sucesso", ...);
-    // }
-    // ==================================================================
-
-    // ==================================================================
-    // TODO [PARTE 3 - BLOCO G: TESTE DAS CARACTERÍSTICAS DO GRAFO (ITEM 2)]:
-    // private static void blocoG_caracteristicasGrafo() {
-    //     System.out.println("\n[G] Análise de Características do Grafo (Item 2)");
-    //     // Testar pelo menos 3 (ou 4) características implementadas:
-    //     // 1) Grau dos vértices / Grau médio
-    //     // 2) Grafo/Caminho Euleriano
-    //     // 3) Coloração / Quantidade de Partiçoes
-    //     // 4) Grafo/Ciclo Hamiltoniano ou Componentes Conexos
-    // }
-    // ==================================================================
-
     public static void main(String[] args) {
-        // TODO [PARTE 3 - REQUISITO EXPLICITO ENUNCIADO]:
-        // Exibir o TÍTULO DA APLICAÇÃO (coerente com a categoria de problema) acima do menu/execução
-        // System.out.println("==================================================");
-        // System.out.println("  SISTEMA DE ANÁLISE DE GRAFOS - [TÍTULO DO SEU PROJETO]");
-        // System.out.println("==================================================");
         System.out.println("=== Testes do TGrafo ===");
         blocoA_construcao();
         blocoB_arestas();
         blocoC_buscaEGrau();
         blocoD_vertices();
         blocoE_arquivo();
-        // TODO [PARTE 3 - CHAMADA DOS NOVOS BLOCOS DE TESTES / MENU DE OPÇÕES]:
-        // blocoF_solucaoProblemaReal();
-        // blocoG_caracteristicasGrafo();
 
         System.out.println("\n=== Resultado: " + (total - falhas) + "/" + total
                 + " verificações passaram ===");
