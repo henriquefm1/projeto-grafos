@@ -24,11 +24,13 @@
  *   algoritmo de Dijkstra com custo -ln(sim) (caminho de maior
  *   similaridade entre dois artistas).
  *
- *   Só usa métodos de TGrafo que já existem (getN, getRotulo,
- *   getPesoAresta, existeAresta), para não depender das demais tarefas.
+ *   Só usa métodos de TGrafo (getN, getRotulo, getPesoAresta, existeAresta),
+ *   o que mantém a classe independente da representação interna do grafo.
  *
  * Histórico de alterações (data — autor — descrição):
  *   11/11/2026 — Henrique Ferreira Marciano — Versão inicial (Parte 3, item 1)
+ *   19/11/2026 — Henrique Ferreira Marciano — Integração à opção 1) do menu; "Descobertas" passa a excluir vizinhos diretos
+ *       (um vizinho com melhor caminho indireto aparecia como descoberta)
  * =====================================================================
  */
 
@@ -232,7 +234,9 @@ public class Recomendacao {
         System.out.println("Descobertas (vizinhos de vizinhos, ainda sem ligação direta):");
         i = 0;
         for (Sugestao s : recomendar(g, o, PROFUNDIDADE)) {
-            if (s.direta()) continue;
+            // "descoberta" = artista SEM ligação direta com a origem. Um vizinho direto pode ter
+            // melhor caminho indireto (produto maior que a própria aresta), mas já aparece na lista acima.
+            if (g.existeAresta(o, s.artista)) continue;
             if (++i > TOP) break;
             System.out.printf(BR, "  %d. %-28s %.2f  (via %s)%n", i, g.getRotulo(s.artista),
                     s.forca, g.getRotulo(s.caminho[1]));
