@@ -1,7 +1,19 @@
-// integrantes:
-//   Enrique Cipolla Martins RA 10427834
-//   Henrique Ferreira Marciano RA 10439797
-//   Pedro Henrique Saraiva Arruda RA 10437747
+// =====================================================================
+// ConexSom — Recomendação Musical por Similaridade entre Artistas
+// Arquivo : Conexidade.java
+//
+// Integrantes:
+//   Enrique Cipolla Martins ........ RA 10427834
+//   Henrique Ferreira Marciano ..... RA 10439797
+//   Pedro Henrique Saraiva Arruda .. RA 10437747
+//
+// Síntese:
+//   Opção i) do menu: conexo/desconexo e componentes (BFS) para grafos não
+//   orientados; categoria C0–C3, FCONEX e grafo reduzido para os orientados.
+//
+// Histórico de alterações (data — autor — descrição):
+//   19/11/2026 — Henrique Ferreira Marciano — Parte 3: cabeçalho padronizado (síntese e histórico)
+// =====================================================================
 
 public class Conexidade {
 
