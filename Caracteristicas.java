@@ -59,7 +59,7 @@ public class Caracteristicas {
     // Opção do menu
     // ------------------------------------------------------------------
 
-    /** Opção l) do menu: apresenta as quatro análises. */
+    /** Opção 2) do menu: apresenta as quatro análises. */
     public static void apresentar(TGrafo g) {
         if (g.isOrientado()) {
             System.out.println("Estas análises valem para grafos NÃO orientados (o ConexSom é tipo 2).");
